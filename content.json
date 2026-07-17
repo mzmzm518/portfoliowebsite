@@ -28,10 +28,10 @@
         { "k": "Focus", "v": "Strategy + Creativity" }
       ],
       "items": [
-        { "title": "Campaign Planning Specialist", "meta": "Trooh - campaign planning and media execution", "year": "2026", "dur": "Jun 2026 - Present" },
-        { "title": "Paid Media Associate", "meta": "GALE - paid search and paid social campaign work", "year": "2025", "dur": "Jun 2025 - Jun 2026" },
-        { "title": "Draws Marketing Coordinator", "meta": "OLG - live draw hosting, filming, editing, and publishing", "year": "2022", "dur": "Jun 2022 - May 2025" },
-        { "title": "Photographer & Videographer", "meta": "Manifesto Community Projects", "year": "2023", "dur": "Mar 2023 - May 2023" }
+        { "title": "Campaign Planning Specialist", "meta": "Trooh - campaign planning and media execution", "year": "2026", "dur": "Jun 2026 - Present", "points": ["Plan and execute media campaigns at Trooh", "Coordinate campaign timelines, delivery, and reporting", "Turn client goals into targeted media plans"] },
+        { "title": "Paid Media Associate", "meta": "GALE - paid search and paid social campaign work", "year": "2025", "dur": "Jun 2025 - Jun 2026", "points": ["Managed paid search and paid social campaigns at GALE", "Wrote and optimized ad copy across client accounts", "Tracked performance and reported on results"] },
+        { "title": "Draws Marketing Coordinator", "meta": "OLG - live draw hosting, filming, editing, and publishing", "year": "2022", "dur": "Jun 2022 - May 2025", "points": ["Hosted live lottery draws on camera", "Filmed, edited, and published draw and event content", "Supported live event production and scheduling"] },
+        { "title": "Photographer & Videographer", "meta": "Manifesto Community Projects", "year": "2023", "dur": "Mar 2023 - May 2023", "points": ["Photographed and filmed community events", "Captured and edited photo and video content"] }
       ],
       "education": [
         { "school": "OCAD University", "degree": "Bachelor of Design, Advertising", "yr": "2020 - 2023", "note": "Honours" }
