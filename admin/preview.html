@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor preview (sandbox)</title>
+  <!-- Point Sveltia at the preview config (in-memory sandbox, no login). -->
+  <link href="config.preview.yml" type="text/yaml" rel="cms-config-url">
+</head>
+<body>
+  <!--
+    PREVIEW ONLY. This loads the same editing UI as the real /admin panel, but
+    with a sandbox backend so it runs with no GitHub login and no accounts.
+    Data here is in-memory (not saved) — it's just to SEE the interface.
+    The real editor is admin/index.html.
+  -->
+  <script src="https://unpkg.com/@sveltia/cms@0/dist/sveltia-cms.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+# ============================================================================
+#  Mariam Lokhat — Portfolio Content Editor (Sveltia CMS config)
+#  This file defines the editing forms shown at  yoursite.com/admin
+#  It edits ../content.json and uploads images into ../images.
+#
+#  >>> PHASE 2 (hosting) TO-DO — two things to fill in once the repo exists:
+#      1. backend.repo below: set to  "her-github-username/her-repo-name"
+#      2. Wire GitHub login (see PHASE2-SETUP.md). Until then, /admin will
+#         load but won't be able to log in or save.
+# ============================================================================
+
+# PREVIEW ONLY — in-memory sandbox so the editor UI runs with no login/accounts.
+# The real editor uses admin/config.yml (github backend). Do not deploy this file.
+backend:
+  name: test-repo
+
+# Images uploaded in the editor are saved here, and stored in content.json
+# as a relative path like  images/my-photo.png  (matches the existing site).
+media_folder: images
+public_folder: images
+
+# Show a "View site" link back to the live page from inside the editor.
+site_url: /
+display_url: /
+
+# Edits commit straight to the live branch — simplest for a solo, non-technical
+# editor (this is the default). To add a review-before-publish step later, add:
+#   publish_mode: editorial_workflow
+
+collections:
+  - name: portfolio
+    label: "Portfolio"
+    description: "Everything on the site lives here. Pick a record to edit it."
+    files:
+      - name: records
+        label: "Records & Tracklists"
+        file: content.json
+        description: "Each record is one section of the site (About, Copywriting, Concepts, Sound, Film)."
+        fields:
+          - name: records
+            label: "Records"
+            label_singular: "Record"
+            widget: list
+            collapsed: true
+            summary: "{{fields.no}}  ·  {{fields.title}}"
+            fields:
+              - { name: id, label: "ID", widget: string, hint: "Internal name — lowercase, no spaces (e.g. about). Set once when adding a record; don't change it later." }
+              - { name: no, label: "Order code", widget: string, hint: "Controls order on the home screen: A1, A2, A3, A4, A5…" }
+              - { name: cat, label: "Catalog number", widget: string, hint: "e.g. ML-001" }
+              - { name: label, label: "Short name (home list)", widget: string }
+              - { name: desc, label: "Short description (home list)", widget: string }
+              - { name: title, label: "Title (record page)", widget: string }
+              - { name: genre, label: "Genre", widget: string }
+              - { name: side, label: "Side", widget: select, options: ["SIDE A", "SIDE B"] }
+              - { name: listLabel, label: "Tracklist heading", widget: string, hint: "e.g. TRACKLIST or EXPERIENCE" }
+              - { name: tagline, label: "Tagline", widget: string }
+              - { name: image, label: "Record image", widget: image, hint: "A square image looks best. Drag-and-drop a file to upload it.", required: false }
+              - name: intro
+                label: "Intro paragraphs"
+                label_singular: "Paragraph"
+                widget: list
+                field: { name: paragraph, label: "Paragraph", widget: text }
+              - name: credits
+                label: "Credits"
+                label_singular: "Credit"
+                widget: list
+                summary: "{{fields.k}} — {{fields.v}}"
+                fields:
+                  - { name: k, label: "Label", widget: string, hint: "e.g. Creative Direction" }
+                  - { name: v, label: "Value", widget: string, hint: "e.g. Mariam Lokhat" }
+              - name: items
+                label: "Tracklist / Projects"
+                label_singular: "Track"
+                widget: list
+                collapsed: true
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: title, label: "Title", widget: string }
+                  - { name: meta, label: "Subtitle / detail", widget: string }
+                  - { name: year, label: "Year", widget: string }
+                  - { name: dur, label: "Duration or dates", widget: string, hint: "e.g. 3:41  or  Jun 2026 – Present" }
+                  - { name: tag, label: "Tag", widget: string, required: false, hint: "Optional, e.g. [ CAMPAIGN ]" }
+
+                  # ---- Media for this project (all optional). ----
+                  - { name: body, label: "Description", widget: text, required: false, hint: "A short paragraph about this project. Shows when the project is expanded." }
+                  - { name: image, label: "Photo (JPG / PNG)", widget: image, required: false, hint: "Drag-and-drop a photo." }
+                  - { name: video, label: "Short video (MP4)", widget: file, required: false, hint: "Best format is MP4. Keep it short (~30s). Avoid .MOV." }
+                  - { name: pdf, label: "PDF", widget: file, required: false }
+                  - { name: pdfLabel, label: "PDF button text", widget: string, required: false }
+                  - { name: link, label: "Link (YouTube, Vimeo, website…)", widget: string, required: false }
+                  - { name: linkLabel, label: "Link button text", widget: string, required: false }
+
+              # ---- The three fields below are used ONLY by the About record. ----
+              # ---- Leave them empty for every other record.                  ----
+              - name: education
+                label: "Education — About record only"
+                label_singular: "School"
+                widget: list
+                required: false
+                collapsed: true
+                summary: "{{fields.school}}"
+                fields:
+                  - { name: school, label: "School", widget: string }
+                  - { name: degree, label: "Degree", widget: string }
+                  - { name: yr, label: "Years", widget: string }
+                  - { name: note, label: "Note", widget: string, required: false }
+              - name: certs
+                label: "Certifications — About record only"
+                label_singular: "Certification"
+                widget: list
+                required: false
+                collapsed: true
+                summary: "{{fields.name}}"
+                fields:
+                  - { name: name, label: "Name", widget: string }
+                  - { name: org, label: "Organization", widget: string }
+                  - { name: yr, label: "Year", widget: string }
+              - { name: certsMore, label: "Certifications footnote — About only", widget: string, required: false, hint: "e.g. + 12 more certifications" }

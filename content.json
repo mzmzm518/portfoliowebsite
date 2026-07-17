@@ -1,0 +1,206 @@
+{
+  "records": [
+    {
+      "id": "about",
+      "no": "A1",
+      "cat": "ML-001",
+      "label": "About Me",
+      "desc": "Background & direction",
+      "title": "About Me",
+      "genre": "Marketing / Media",
+      "side": "SIDE A",
+      "listLabel": "EXPERIENCE",
+      "tagline": "Strategic thinking, creative ideas, and measurable impact.",
+      "image": "images/about.png",
+      "aboutPhotos": [
+        "images/about-photos/mariam-headshot.png",
+        "images/about-photos/mariam-ocad-graduation.png",
+        "images/about-photos/mariam-travel.png"
+      ],
+      "intro": [
+        "I’m a Toronto-based creative and Campaign Planning Specialist with experience across paid media, copywriting, film, hosting live events, photography, graphic design, and sound design. I have a genuine interest in solving business problems and helping brands grow through creative, thoughtful, and unique ideas.",
+        "Working closely with data and performance metrics has given me a clear understanding of how ideas are executed, targeted, and measured. At the same time, I’m deeply drawn to the creative side of marketing and am constantly writing, concepting, and developing new ideas. My background across agency and corporate environments helps me bring a balanced, results-driven perspective to collaborative creative work."
+      ],
+      "credits": [
+        { "k": "Discipline", "v": "Paid Media / Advertising" },
+        { "k": "Based In", "v": "Toronto, Canada" },
+        { "k": "Education", "v": "OCAD University" },
+        { "k": "Focus", "v": "Strategy + Creativity" }
+      ],
+      "items": [
+        { "title": "Campaign Planning Specialist", "meta": "Trooh - campaign planning and media execution", "year": "2026", "dur": "Jun 2026 - Present" },
+        { "title": "Paid Media Associate", "meta": "GALE - paid search and paid social campaign work", "year": "2025", "dur": "Jun 2025 - Jun 2026" },
+        { "title": "Draws Marketing Coordinator", "meta": "OLG - live draw hosting, filming, editing, and publishing", "year": "2022", "dur": "Jun 2022 - May 2025" },
+        { "title": "Photographer & Videographer", "meta": "Manifesto Community Projects", "year": "2023", "dur": "Mar 2023 - May 2023" }
+      ],
+      "education": [
+        { "school": "OCAD University", "degree": "Bachelor of Design, Advertising", "yr": "2020 - 2023", "note": "Honours" }
+      ],
+      "certs": [
+        { "name": "Google Ads Search 360", "org": "Google", "yr": "2025" },
+        { "name": "Amazon DSP Campaigns", "org": "Amazon", "yr": "2025" }
+      ],
+      "certsMore": "+ additional platform certifications"
+    },
+    {
+      "id": "copywriting",
+      "no": "A2",
+      "cat": "ML-002",
+      "label": "Copywriting",
+      "desc": "Paid search examples",
+      "title": "Copywriting",
+      "genre": "Words / Paid Search",
+      "side": "SIDE A",
+      "listLabel": "COPYWRITING PROJECTS",
+      "tagline": "Clear paid search copy for service-led campaigns.",
+      "image": "images/newcopywrite.png",
+      "intro": [
+        "I wrote paid search copy for Enercare and BathFitter while working as a Paid Media Associate at GALE Partners.",
+        "My work included Google Ads search results and sitelinks, with copy focused on clear offers, service benefits, and conversion-driven messaging."
+      ],
+      "credits": [
+        { "k": "Client Work", "v": "Enercare / BathFitter" },
+        { "k": "Role", "v": "Paid Media Associate" },
+        { "k": "Agency", "v": "GALE Partners" },
+        { "k": "Platform", "v": "Google Ads" }
+      ],
+      "items": [
+        {
+          "title": "Paid Search Copywriting",
+          "meta": "Enercare + BathFitter Google Ads",
+          "year": "2025",
+          "dur": "4 examples",
+          "tag": "[ GOOGLE ADS ]",
+          "body": "I wrote paid search ads and sitelinks for Enercare and BathFitter while working as a Paid Media Associate at GALE Partners. The examples below show offer-led, service-focused, and conversion-focused copy across several campaigns.",
+          "gallery": [
+            { "image": "images/copywriting-project/enercare-water-treatment.png", "title": "Enercare Water Treatment", "caption": "Search ads and sitelinks focused on water treatment services, clear offers, and customer benefits." },
+            { "image": "images/copywriting-project/enercare-protection-plans.png", "title": "Enercare Protection Plans", "caption": "Seasonal, offer-led messaging for home protection plans." },
+            { "image": "images/copywriting-project/enercare-home-services.png", "title": "Enercare Home Services", "caption": "Service-focused sponsored result copy built around reliability and convenience." },
+            { "image": "images/copywriting-project/bathfitter-remodel.png", "title": "BathFitter Bathroom Remodel", "caption": "Conversion-focused search copy highlighting a simple remodeling experience." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "no": "A3",
+      "cat": "ML-003",
+      "label": "Visual Work",
+      "desc": "Design & photography",
+      "title": "Visual Work",
+      "genre": "Photo / Graphic Design",
+      "side": "SIDE B",
+      "listLabel": "VISUAL PROJECTS",
+      "tagline": "Photography, mockups, and visual concept exploration.",
+      "image": "images/concepts.png",
+      "intro": [
+        "I use photography and graphic design as ways to explore visual storytelling, composition, and campaign ideas.",
+        "My photography includes portraits, landscapes, architecture, city views, and detail studies. My graphic design work includes mockups and campaign-style concepts for brands such as Converse, Subway, Beyond Mac, and Hubbell."
+      ],
+      "credits": [
+        { "k": "Photography", "v": "Canon Rebel i8" },
+        { "k": "Editing", "v": "Photoshop / Lightroom / Canva" },
+        { "k": "Design", "v": "Mockups / Campaign Concepts" },
+        { "k": "Focus", "v": "Portraits / Landscapes / Brand Concepts" }
+      ],
+      "items": [],
+      "visualSections": [
+        {
+          "title": "Photography",
+          "subtitle": "Portraits, landscapes, architecture, and city views",
+          "body": "Photography is a personal passion of mine. As a hobbyist photographer, I enjoy capturing the beauty of landscapes and the unique essence of individuals through portrait work, using my lens to explore both the natural world and the stories people carry. Shot on a Canon Rebel i8 and edited in Photoshop and Lightroom.",
+          "gallery": [
+            { "image": "images/visual-work/photography-portrait-01.jpg", "title": "Portrait Study", "caption": "Natural-light portrait photography." },
+            { "image": "images/visual-work/photography-toronto-skyline.jpg", "title": "Toronto From Above", "caption": "An elevated view of Toronto's downtown architecture." },
+            { "image": "images/visual-work/photography-mountain-wildlife.jpg", "title": "Mountain Wildlife", "caption": "A wildlife moment framed by the lake and surrounding mountains." },
+            { "image": "images/visual-work/photography-mountain-lake.jpg", "title": "Mountain Lake", "caption": "Landscape photography capturing scale, light, and stillness." }
+          ]
+        },
+        {
+          "title": "Graphic Design",
+          "subtitle": "Brand mockups and creative advertising concepts",
+          "body": "These are a few mockups I created to explore creative concepts in graphic design. The collection includes advertising and campaign-style work across fashion, food, and technology brands, edited with Photoshop, Lightroom, and Canva.",
+          "gallery": [
+            { "image": "images/visual-work/design-converse.png", "title": "Converse Promotion", "caption": "A retail promotion concept built around bold type and a clean product focus." },
+            { "image": "images/visual-work/design-beyond-mac.png", "title": "Beyond Mac", "caption": "A colourful plant-based burger launch concept." },
+            { "image": "images/visual-work/design-hubbell-yellow.png", "title": "Hubbell Edge Connect", "caption": "A long-form product advertisement using Hubbell's yellow-and-black visual language." },
+            { "image": "images/visual-work/design-hubbell-black.png", "title": "Hubbell Product Overview", "caption": "An alternate Edge Connect layout focused on product features and performance." },
+            { "image": "images/visual-work/design-celebrity-cruises.png", "title": "Celebrity Cruises", "caption": "A travel advertisement concept centred on ease, service, and escape." },
+            { "image": "images/visual-work/design-eos-product.png", "title": "EOS Product Visual", "caption": "A bright product-led composition inspired by fruit and mochi flavours." },
+            { "image": "images/visual-work/design-eos-campaign.png", "title": "EOS Mochi Campaign", "caption": "A campaign layout combining product benefits with flavour-led art direction." },
+            { "image": "images/visual-work/design-cineplex.png", "title": "Cineplex Protein Popcorn", "caption": "A high-impact cinema snack advertisement concept." },
+            { "image": "images/visual-work/design-febreze-crumbl.png", "title": "Febreze × Crumbl", "caption": "A playful collaboration concept connecting home fragrance with bakery-inspired scents." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sound",
+      "no": "A4",
+      "cat": "ML-004",
+      "label": "Sound Design",
+      "desc": "Instrumental snippets",
+      "title": "Sound Design",
+      "genre": "Audio / Instrumentals",
+      "side": "SIDE B",
+      "listLabel": "SNIPPETS",
+      "tagline": "Instrumental sketches I made in Logic Pro X.",
+      "image": "images/soundnew.png",
+      "intro": [
+        "Here are a few instrumental snippets I created in Logic Pro X, exploring different genres and moods.",
+        "Each track can be played directly here as the final audio files are added."
+      ],
+      "credits": [
+        { "k": "Sound Design", "v": "Mariam Lokhat" },
+        { "k": "DAW", "v": "Logic Pro X" },
+        { "k": "Hardware", "v": "AKAI MPK Mini MIDI Keyboard" },
+        { "k": "Needed", "v": "Audio files or share links" }
+      ],
+      "items": [
+        { "title": "Stranger Things Inspired", "meta": "Original instrumental created in Logic Pro X", "year": "2024", "dur": "1:10", "tag": "[ INSTRUMENTAL ]", "body": "A synth-led instrumental inspired by atmospheric television scores." },
+        { "title": "Cottage Night", "meta": "Original instrumental created in Logic Pro X", "year": "2024", "dur": "1:10", "tag": "[ INSTRUMENTAL ]", "body": "An original instrumental sketch created in Logic Pro X." },
+        { "title": "A Hip Hop MashUp", "meta": "Original instrumental created in Logic Pro X", "year": "2024", "dur": "1:10", "tag": "[ INSTRUMENTAL ]", "body": "An original hip hop-inspired instrumental sketch." },
+        { "title": "Jazz Inspired", "meta": "Original instrumental created in Logic Pro X", "year": "2024", "dur": "1:10", "tag": "[ INSTRUMENTAL ]", "body": "An original instrumental exploring jazz-inspired rhythms and melodies." }
+      ]
+    },
+    {
+      "id": "film",
+      "no": "A5",
+      "cat": "ML-005",
+      "label": "Film",
+      "desc": "Writing & directing",
+      "title": "Film",
+      "genre": "Motion / Storytelling",
+      "side": "SIDE B",
+      "listLabel": "PROJECTS",
+      "tagline": "Storytelling through writing, directing, filming, and editing.",
+      "image": "images/film.png",
+      "intro": [
+        "This work reflects my genuine interest in storytelling through writing, editing, and directing.",
+        "The collection includes a short film, a commercial for a fictitious brand, and a documentary excerpt."
+      ],
+      "credits": [
+        { "k": "Writing", "v": "Mariam Lokhat" },
+        { "k": "Direction", "v": "Mariam Lokhat" },
+        { "k": "Editing", "v": "Adobe Premiere Pro" },
+        { "k": "Cameras", "v": "Sony A7 / Canon Rebel i8" }
+      ],
+      "items": [
+        { "title": "Blue Crayon", "meta": "Short film — written and directed by me", "year": "2024", "dur": "3:30", "tag": "[ SHORT FILM ]", "body": "Blue Crayon is a short film I wrote and directed, inspired by my own experiences.", "image": "images/film-projects/blue-crayon.jpg", "link": "https://www.youtube.com/watch?v=WzHj6_dl4qA", "linkLabel": "Watch Blue Crayon" },
+        { "title": "Link’d Commercial", "meta": "Commercial — co-directed, written, and performed by me", "year": "2024", "dur": "1:20", "tag": "[ COMMERCIAL ]", "body": "A commercial I co-directed, wrote, and acted in for a fictitious website created with my team.", "image": "images/film-projects/linkd-commercial.jpg", "link": "https://www.youtube.com/watch?v=ZkJThfyJbT8", "linkLabel": "Watch Link’d" },
+        { "title": "Sibling Perspectives — Rough Draft", "meta": "Documentary excerpt — directed, filmed, and interviewed by me", "year": "2024", "dur": "2:10", "tag": "[ DOCUMENTARY ]", "body": "A short documentary excerpt that I directed, filmed, and conducted interviews for.", "image": "images/film-projects/rough-documentary.jpg", "link": "https://www.youtube.com/watch?v=wcbFkL_CfiQ", "linkLabel": "Watch Rough Draft" }
+      ],
+      "liveEvents": {
+        "title": "Hosting Live Events",
+        "subtitle": "OLG live draws, production, and on-camera hosting",
+        "body": "During my time at OLG, I hosted live events including The Big Spin, Bigger Spin, and Plinko. I also supported live lottery draws, filmed and edited content in Adobe Premiere Pro, and prepared final videos for publication.",
+        "gallery": [
+          { "image": "images/live-events/olg-prize-centre.jpg", "title": "OLG Prize Centre", "caption": "Live-draw production environment." },
+          { "image": "images/live-events/big-spin-winner.png", "title": "The Big Spin", "caption": "Winner moment from a live event." },
+          { "image": "images/live-events/bigger-spin-winner.jpg", "title": "Bigger Spin", "caption": "On-set live event production." },
+          { "image": "images/live-events/olg-studio.jpg", "title": "OLG Studio", "caption": "Lottery studio and broadcast setup." }
+        ]
+      }
+    }
+  ]
+}

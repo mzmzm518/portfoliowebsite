@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Website Editor</title>
+<link href="vendor/fonts.css" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEAE3; --ink:#1b1b1a; --ink-soft:#54514a;
+    --gold:#9c7b22; --gold-bright:#c9a24a; --line:rgba(44,41,32,.14);
+    --card:#f7f5ef; --shadow:0 10px 34px rgba(30,24,14,.10);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Hanken Grotesk',system-ui,sans-serif;line-height:1.5;}
+  .mono{font-family:'Space Mono',monospace;letter-spacing:2px;text-transform:uppercase;}
+  .serif{font-family:'Libre Caslon Display','Fraunces',serif;}
+
+  /* ---- top explainer banner ---- */
+  .banner{background:linear-gradient(180deg,#fbf9f4,#f1eee6);border-bottom:1px solid var(--line);
+    padding:18px 26px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+  .banner .badge{font-size:11px;color:#fff;background:var(--gold);padding:5px 11px;border-radius:20px;
+    font-family:'Space Mono',monospace;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;}
+  .banner h1{margin:0;font-size:19px;font-weight:600;}
+  .banner p{margin:2px 0 0;font-size:14px;color:var(--ink-soft);}
+
+  /* ---- 3-column layout ---- */
+  .wrap{display:grid;grid-template-columns:230px minmax(0,1fr) minmax(0,1fr);gap:0;min-height:calc(100vh - 78px);}
+  @media(max-width:1000px){.wrap{grid-template-columns:1fr;}}
+
+  /* ---- left: section list ---- */
+  .side{border-right:1px solid var(--line);padding:20px 14px;background:#f3f0e9;}
+  .side .lbl{font-size:10px;color:var(--ink-soft);margin:0 8px 12px;}
+  .navbtn{display:block;width:100%;text-align:left;border:1px solid transparent;background:none;
+    padding:11px 12px;border-radius:9px;cursor:pointer;margin-bottom:4px;transition:.15s;}
+  .navbtn:hover{background:#eae6dd;}
+  .navbtn.on{background:#fff;border-color:var(--line);box-shadow:0 2px 8px rgba(30,24,14,.06);}
+  .navbtn .n{font-size:15px;font-weight:600;color:var(--ink);}
+  .navbtn .d{font-size:12px;color:var(--ink-soft);margin-top:1px;}
+  .navbtn .code{font-size:10px;color:var(--gold);letter-spacing:2px;font-family:'Space Mono',monospace;}
+
+  /* ---- middle: edit form ---- */
+  .edit{padding:24px 26px;overflow-y:auto;}
+  .edit .panelttl{font-size:11px;color:var(--gold);margin-bottom:2px;}
+  .edit h2{margin:0 0 4px;font-size:26px;}
+  .edit .hint-top{font-size:13px;color:var(--ink-soft);margin:0 0 22px;}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-size:12px;font-weight:600;margin-bottom:5px;color:#3a3730;}
+  .field .help{font-size:12px;color:var(--ink-soft);margin:-2px 0 7px;}
+  .field input,.field textarea{width:100%;padding:10px 12px;border:1px solid #d9d4c8;border-radius:8px;
+    font-family:inherit;font-size:14px;background:#fff;color:var(--ink);resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(156,123,34,.14);}
+  .group{border:1px solid var(--line);border-radius:11px;padding:14px;margin-bottom:14px;background:#faf8f3;position:relative;}
+  .group .gtag{font-size:10px;color:var(--ink-soft);margin-bottom:9px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .rm{position:absolute;top:10px;right:10px;border:none;background:#efe9dd;color:#8a6a1f;
+    width:24px;height:24px;border-radius:6px;cursor:pointer;font-size:15px;line-height:1;}
+  .rm:hover{background:#e5dcc8;}
+  .addbtn{border:1px dashed #c8bfa8;background:none;color:#7a6a2f;padding:9px 14px;border-radius:8px;
+    cursor:pointer;font-size:13px;font-weight:600;width:100%;}
+  .addbtn:hover{background:#f3eee2;}
+  .secttl{font-size:11px;color:var(--ink-soft);margin:26px 0 10px;border-top:1px solid var(--line);padding-top:16px;}
+
+  /* ---- right: live preview ---- */
+  .prevwrap{background:#e6e2d9;padding:22px;overflow-y:auto;}
+  .prevflag{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-soft);margin-bottom:12px;}
+  .dot{width:8px;height:8px;border-radius:50%;background:#3a9a5a;box-shadow:0 0 0 3px rgba(58,154,90,.2);}
+  .card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:30px 30px 34px;}
+  .card .side-lbl{font-size:10px;color:var(--gold);}
+  .card .p-title{font-size:34px;margin:6px 0 2px;line-height:1.05;}
+  .card .p-tag{font-family:'Libre Caslon Display',serif;font-style:italic;font-size:16px;color:var(--ink-soft);margin:0 0 18px;}
+  .card .p-intro p{font-size:15px;color:#3d3a33;margin:0 0 12px;}
+  .card .p-list-lbl{font-size:10px;color:var(--ink-soft);margin:22px 0 8px;border-top:1px solid var(--line);padding-top:14px;}
+  .trk{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);}
+  .trk .t{font-weight:600;font-size:14px;}
+  .trk .m{font-size:12px;color:var(--ink-soft);}
+  .trk .y{font-size:12px;color:var(--gold);font-family:'Space Mono',monospace;white-space:nowrap;}
+  .creds{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:20px;}
+  .creds div{font-size:12px;}
+  .creds .k{color:var(--ink-soft);}
+  .creds .v{color:var(--ink);font-weight:600;}
+
+  /* ---- media upload chips ---- */
+  .filepreview{margin-top:7px;}
+  .fchip{display:inline-flex;align-items:center;gap:8px;background:#eef3ea;border:1px solid #cfe0c8;
+    color:#3a5a34;font-size:12px;padding:5px 10px;border-radius:20px;}
+  .fchip .fx{border:none;background:#d7e5cf;color:#3a5a34;border-radius:50%;width:18px;height:18px;cursor:pointer;line-height:1;}
+  .field input[type=file]{padding:8px;background:#fff;font-size:13px;}
+
+  /* ---- project preview cards (right pane) ---- */
+  .pcard{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px;background:#fff;}
+  .pcard .pt{font-weight:600;font-size:15px;}
+  .pcard .pm{font-size:12px;color:var(--ink-soft);margin-bottom:2px;}
+  .pcard .pb{font-size:13px;color:#3d3a33;margin:8px 0;}
+  .pcard img.pimg{max-width:100%;border-radius:8px;display:block;margin:9px 0;}
+  .pcard video{max-width:100%;border-radius:8px;display:block;margin:9px 0;background:#000;}
+  .pcard .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px;}
+  .pcard .mbtn{font-size:12px;padding:6px 12px;border-radius:7px;text-decoration:none;font-weight:600;
+    border:1px solid var(--gold);color:var(--gold);display:inline-flex;gap:6px;align-items:center;}
+  .pcard .mbtn.pdf{border-color:#b3453a;color:#b3453a;}
+
+  /* ---- save bar ---- */
+  .savebar{position:sticky;bottom:0;margin-top:26px;background:#fbf9f4;border:1px solid var(--line);
+    border-radius:11px;padding:14px 16px;display:flex;gap:12px;align-items:center;}
+  .savebar .save{background:var(--gold);color:#fff;border:none;padding:11px 22px;border-radius:8px;
+    font-weight:600;cursor:pointer;font-size:14px;}
+  .savebar .save:hover{background:#886b1d;}
+  .savebar small{color:var(--ink-soft);font-size:12px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);opacity:0;
+    background:#26241d;color:#fbf9f4;padding:13px 20px;border-radius:10px;font-size:14px;transition:.25s;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);pointer-events:none;max-width:90vw;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+  <div class="banner">
+    <span class="badge">Your Editor</span>
+    <div>
+      <h1>This is your website's control panel</h1>
+      <p>Pick a section on the left, change any box, and watch the <b>live preview</b> on the right update as you type.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <nav class="side">
+      <p class="lbl mono">Sections of your site</p>
+      <div id="nav"></div>
+    </nav>
+
+    <section class="edit">
+      <div class="panelttl mono">Now editing</div>
+      <h2 id="editName">—</h2>
+      <p class="hint-top" id="editHint">Change anything below. Nothing is saved until you press the green button.</p>
+      <div id="form"></div>
+
+      <div class="savebar">
+        <button class="save" id="saveBtn">Publish changes</button>
+        <small id="saveNote">In your real editor this publishes straight to your live website. (This preview page doesn't save — it's just to practice.)</small>
+      </div>
+    </section>
+
+    <aside class="prevwrap">
+      <div class="prevflag"><span class="dot"></span> LIVE PREVIEW — this is how it looks on your site</div>
+      <div class="card" id="preview"></div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+const NAV_DESC = {
+  about:'The person behind it', copywriting:'Words that sell & stick',
+  concepts:'Big ideas & campaigns', sound:'Audio & sonic identity', film:'Motion & moving image'
+};
+let data=null, current=null, rec=null;
+
+const esc=s=>String(s==null?'':s);
+
+fetch('content.json',{cache:'no-store'})
+  .then(r=>r.json())
+  .then(d=>{ data=d; buildNav(); select(d.records[0].id); })
+  .catch(e=>{ document.getElementById('form').innerHTML =
+    '<p style="color:#a33">Couldn\'t load content.json — make sure you opened this through the local server (http://localhost:8000/editor-demo.html), not by double-clicking the file.</p>'; });
+
+function buildNav(){
+  const n=document.getElementById('nav');
+  n.innerHTML='';
+  data.records.forEach(r=>{
+    const b=document.createElement('button');
+    b.className='navbtn'; b.dataset.id=r.id;
+    b.innerHTML=`<div class="code">${esc(r.no)}</div><div class="n">${esc(r.label)}</div>
+      <div class="d">${esc(NAV_DESC[r.id]||r.desc||'')}</div>`;
+    b.onclick=()=>select(r.id);
+    n.appendChild(b);
+  });
+}
+
+function select(id){
+  current=id;
+  rec=JSON.parse(JSON.stringify(data.records.find(r=>r.id===id))); // working copy
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
+  document.getElementById('editName').textContent=rec.label;
+  document.getElementById('editHint').textContent =
+    id==='about' ? 'This is your “About Me”. Change your bio, or add/edit a job in your experience list.'
+                 : 'Edit the text, taglines, and the list of projects for this section.';
+  buildForm();
+  renderPreview();
+}
+
+function field(label,help,value,onInput,textarea){
+  const w=document.createElement('div'); w.className='field';
+  const tag=textarea?'textarea':'input';
+  w.innerHTML=`<label>${label}</label>${help?`<div class="help">${help}</div>`:''}
+    <${tag} ${textarea?'rows="3"':''}></${tag}>`;
+  const el=w.querySelector(textarea?'textarea':'input');
+  el.value=esc(value);
+  el.addEventListener('input',()=>{ onInput(el.value); renderPreview(); });
+  return w;
+}
+
+function buildForm(){
+  const f=document.getElementById('form'); f.innerHTML='';
+
+  f.appendChild(field('Section title','The big heading on this section.',rec.title,v=>rec.title=v));
+  f.appendChild(field('Tagline','One short line under the title.',rec.tagline,v=>rec.tagline=v));
+  f.appendChild(field('Short description','The one-liner shown in the home list.',rec.desc,v=>rec.desc=v));
+
+  // intro paragraphs
+  const introTtl=document.createElement('div'); introTtl.className='secttl mono';
+  introTtl.textContent = current==='about' ? 'Your bio (paragraphs)' : 'Intro paragraphs';
+  f.appendChild(introTtl);
+  rec.intro=rec.intro||[];
+  rec.intro.forEach((p,i)=>{
+    const g=document.createElement('div'); g.className='group';
+    g.innerHTML=`<div class="gtag mono">Paragraph ${i+1}</div><button class="rm" title="Remove">×</button>`;
+    g.querySelector('.rm').onclick=()=>{rec.intro.splice(i,1);buildForm();renderPreview();};
+    g.appendChild(field('','',p,v=>rec.intro[i]=v,true));
+    f.appendChild(g);
+  });
+  f.appendChild(addBtn('+ Add a paragraph',()=>{rec.intro.push('New paragraph…');buildForm();renderPreview();}));
+
+  // items (experience / tracklist)
+  const itemsTtl=document.createElement('div'); itemsTtl.className='secttl mono';
+  itemsTtl.textContent = current==='about' ? 'Your experience (jobs)' : 'Projects / tracklist';
+  f.appendChild(itemsTtl);
+  rec.items=rec.items||[];
+  rec.items.forEach((it,i)=>{
+    const g=document.createElement('div'); g.className='group';
+    g.innerHTML=`<div class="gtag mono">${current==='about'?'Job':'Project'} ${i+1}</div><button class="rm" title="Remove">×</button>`;
+    g.querySelector('.rm').onclick=()=>{rec.items.splice(i,1);buildForm();renderPreview();};
+    g.appendChild(field(current==='about'?'Role / title':'Title','',it.title,v=>rec.items[i].title=v));
+    g.appendChild(field(current==='about'?'Company / detail':'Subtitle','',it.meta,v=>rec.items[i].meta=v));
+    const row=document.createElement('div'); row.className='row2';
+    row.appendChild(field('Year','',it.year,v=>rec.items[i].year=v));
+    row.appendChild(field(current==='about'?'Dates':'Duration','',it.dur,v=>rec.items[i].dur=v));
+    g.appendChild(row);
+    if(current!=='about'){                          // projects get the flexible media slots
+      g.appendChild(field('Description','A sentence or two about this project. (Optional)',it.body,v=>rec.items[i].body=v,true));
+      g.appendChild(uploadField('Photo — JPG / PNG','A picture of the work. (Optional)','image/png,image/jpeg',it,'image'));
+      g.appendChild(uploadField('Short video — MP4 / MOV (~30s)','Keep it short. MP4 plays everywhere; a .MOV may not — or just paste a link below instead. (Optional)','video/mp4,video/quicktime',it,'video'));
+      g.appendChild(uploadField('PDF — deck, writing sample, résumé…','A file people can open or download. (Optional)','application/pdf',it,'pdf'));
+      const lr=document.createElement('div'); lr.className='row2';
+      lr.appendChild(field('Link','Paste a link — published work, YouTube, etc. (Optional)',it.link,v=>rec.items[i].link=v));
+      lr.appendChild(field('Link text','What the button says, e.g. “Watch it”.',it.linkLabel,v=>rec.items[i].linkLabel=v));
+      g.appendChild(lr);
+    }
+    f.appendChild(g);
+  });
+  f.appendChild(addBtn(current==='about'?'+ Add a job':'+ Add a project',
+    ()=>{rec.items.push({title:'New '+(current==='about'?'role':'project'),meta:'',year:'',dur:''});buildForm();renderPreview();}));
+
+  // credits
+  const cTtl=document.createElement('div'); cTtl.className='secttl mono'; cTtl.textContent='Credits';
+  f.appendChild(cTtl);
+  rec.credits=rec.credits||[];
+  rec.credits.forEach((c,i)=>{
+    const g=document.createElement('div'); g.className='group';
+    g.innerHTML=`<div class="gtag mono">Credit ${i+1}</div><button class="rm" title="Remove">×</button>`;
+    g.querySelector('.rm').onclick=()=>{rec.credits.splice(i,1);buildForm();renderPreview();};
+    const row=document.createElement('div'); row.className='row2';
+    row.appendChild(field('Label','',c.k,v=>rec.credits[i].k=v));
+    row.appendChild(field('Value','',c.v,v=>rec.credits[i].v=v));
+    g.appendChild(row);
+    f.appendChild(g);
+  });
+  f.appendChild(addBtn('+ Add a credit',()=>{rec.credits.push({k:'Label',v:'Value'});buildForm();renderPreview();}));
+}
+
+function addBtn(text,fn){
+  const b=document.createElement('button'); b.className='addbtn'; b.textContent=text; b.onclick=fn; return b;
+}
+
+// A friendly "choose a file" control. In this practice page it previews the file
+// locally (nothing uploads). In the real editor this is where she drags a file in.
+function uploadField(label,help,accept,item,key){
+  const w=document.createElement('div'); w.className='field';
+  w.innerHTML=`<label>${label}</label>${help?`<div class="help">${help}</div>`:''}
+    <input type="file" accept="${accept}"><div class="filepreview"></div>`;
+  const inp=w.querySelector('input'), pv=w.querySelector('.filepreview');
+  function draw(){
+    if(item[key+'Name']){
+      pv.innerHTML=`<span class="fchip">📎 ${esc(item[key+'Name'])} <button class="fx" title="Remove">×</button></span>`;
+      pv.querySelector('.fx').onclick=()=>{ delete item[key]; delete item[key+'Name']; inp.value=''; draw(); renderPreview(); };
+    } else pv.innerHTML='';
+  }
+  inp.addEventListener('change',()=>{
+    const file=inp.files[0]; if(!file) return;
+    item[key]=URL.createObjectURL(file); item[key+'Name']=file.name; draw(); renderPreview();
+  });
+  draw();
+  return w;
+}
+
+function renderPreview(){
+  const p=document.getElementById('preview');
+  const intro=(rec.intro||[]).map(x=>`<p>${esc(x)}</p>`).join('');
+  let itemsHtml;
+  if(current==='about'){                            // experience = simple rows
+    itemsHtml=(rec.items||[]).map(it=>`<div class="trk">
+      <div><div class="t">${esc(it.title)}</div><div class="m">${esc(it.meta)}</div></div>
+      <div class="y">${esc(it.year||it.dur)}</div></div>`).join('');
+  } else {                                          // projects = rich media cards
+    itemsHtml=(rec.items||[]).map(it=>{
+      let media='';
+      if(it.image) media+=`<img class="pimg" src="${it.image}" alt="">`;
+      if(it.video) media+=`<video src="${it.video}" controls preload="metadata"></video>`;
+      const btns=[];
+      if(it.pdf)  btns.push(`<a class="mbtn pdf" href="${it.pdf}" target="_blank">📄 ${esc(it.pdfName||'View PDF')}</a>`);
+      if(it.link) btns.push(`<a class="mbtn" href="${esc(it.link)}" target="_blank">🔗 ${esc(it.linkLabel||'Open link')}</a>`);
+      const btnsHtml=btns.length?`<div class="btns">${btns.join('')}</div>`:'';
+      return `<div class="pcard">
+        <div class="pt">${esc(it.title)}</div>
+        <div class="pm">${esc(it.meta)}${it.year?' · '+esc(it.year):''}</div>
+        ${it.body?`<div class="pb">${esc(it.body)}</div>`:''}
+        ${media}${btnsHtml}</div>`;
+    }).join('');
+  }
+  const creds=(rec.credits||[]).map(c=>`<div><div class="k">${esc(c.k)}</div><div class="v">${esc(c.v)}</div></div>`).join('');
+  p.innerHTML=`
+    <div class="side-lbl mono">${esc(rec.side||'')} · ${esc(rec.cat||'')}</div>
+    <h3 class="p-title serif">${esc(rec.title)}</h3>
+    <p class="p-tag">${esc(rec.tagline)}</p>
+    <div class="p-intro">${intro}</div>
+    <div class="p-list-lbl mono">${esc(rec.listLabel||'Tracklist')}</div>
+    ${itemsHtml}
+    <div class="creds">${creds}</div>`;
+}
+
+// demo "save"
+document.getElementById('saveBtn').onclick=()=>{
+  const t=document.getElementById('toast');
+  t.textContent='✓ Saved! (In your live editor this would now be published to your website.)';
+  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3200);
+};
+</script>
+</body>
+</html>

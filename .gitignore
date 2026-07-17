@@ -1,0 +1,9 @@
+# OS / editor junk — never needs to be on the site
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+.thumbnail
+
+# Claude Code local settings — not part of the website
+.claude/
