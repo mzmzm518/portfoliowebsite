@@ -16,6 +16,14 @@
     Only this admin tool loads from the internet — the public site itself
     stays fully self-contained.
   -->
+  <!-- Always-visible help link, floating over the editor (and the login screen)
+       so Mariam can always find the how-to guide. Opens in a new tab. -->
+  <a href="/guide.html" target="_blank" rel="noopener"
+     style="position:fixed;z-index:2147483647;right:16px;bottom:16px;
+            background:#2a2014;color:#f4ecd7;font:600 13px/1 system-ui,-apple-system,Segoe UI,sans-serif;
+            padding:12px 18px;border-radius:30px;text-decoration:none;
+            box-shadow:0 6px 20px rgba(0,0,0,.3);">📖 How to edit this site</a>
+
   <script src="https://unpkg.com/@sveltia/cms@0/dist/sveltia-cms.js"></script>
 </body>
 </html>
