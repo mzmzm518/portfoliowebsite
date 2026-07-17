@@ -18,7 +18,6 @@
   .mono{font-family:'Space Mono',monospace;letter-spacing:2px;text-transform:uppercase;}
   .serif{font-family:'Libre Caslon Display','Fraunces',serif;}
 
-  /* ---- login gate ---- */
   .gate{position:fixed;inset:0;z-index:50;background:linear-gradient(160deg,#f4f1ea,#e7e2d7);
     display:flex;align-items:center;justify-content:center;padding:24px;}
   .gate .box{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);
@@ -33,7 +32,6 @@
   .gate .err{color:#a3392f;font-size:13px;margin-top:16px;min-height:18px;}
   .gate a.help{display:block;margin-top:20px;font-size:13px;color:var(--gold);}
 
-  /* ---- top banner ---- */
   .banner{background:linear-gradient(180deg,#fbf9f4,#f1eee6);border-bottom:1px solid var(--line);
     padding:14px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
   .banner .badge{font-size:11px;color:#fff;background:var(--gold);padding:5px 11px;border-radius:20px;
@@ -44,8 +42,7 @@
   .banner .toplink{font-size:13px;color:var(--gold);text-decoration:none;font-weight:600;margin-left:6px;}
   .banner .who{font-size:12px;color:var(--ink-soft);}
 
-  /* ---- 3-column layout ---- */
-  .wrap{display:grid;grid-template-columns:230px minmax(0,1fr) minmax(0,1fr);gap:0;min-height:calc(100vh - 62px);}
+  .wrap{display:grid;grid-template-columns:220px minmax(0,1fr) minmax(0,1fr);gap:0;min-height:calc(100vh - 62px);}
   @media(max-width:1000px){.wrap{grid-template-columns:1fr;}}
 
   .side{border-right:1px solid var(--line);padding:20px 14px;background:#f3f0e9;}
@@ -62,7 +59,7 @@
   .edit .panelttl{font-size:11px;color:var(--gold);margin-bottom:2px;}
   .edit h2{margin:0 0 4px;font-size:26px;}
   .edit .hint-top{font-size:13px;color:var(--ink-soft);margin:0 0 22px;}
-  .field{margin-bottom:20px;}
+  .field{margin-bottom:18px;}
   .field label{display:block;font-size:12px;font-weight:600;margin-bottom:5px;color:#3a3730;}
   .field .help{font-size:12px;color:var(--ink-soft);margin:-2px 0 7px;}
   .field input,.field textarea{width:100%;padding:10px 12px;border:1px solid #d9d4c8;border-radius:8px;
@@ -72,22 +69,33 @@
   .group .gtag{font-size:10px;color:var(--ink-soft);margin-bottom:9px;}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
   .rm{position:absolute;top:10px;right:10px;border:none;background:#efe9dd;color:#8a6a1f;
-    width:24px;height:24px;border-radius:6px;cursor:pointer;font-size:15px;line-height:1;}
+    width:26px;height:26px;border-radius:6px;cursor:pointer;font-size:15px;line-height:1;}
   .rm:hover{background:#e5dcc8;}
+  .mv{position:absolute;top:10px;right:44px;display:flex;gap:4px;}
+  .mv button{border:none;background:#efe9dd;color:#7a6a2f;width:26px;height:26px;border-radius:6px;cursor:pointer;font-size:12px;line-height:1;}
+  .mv button:hover{background:#e5dcc8;}
   .addbtn{border:1px dashed #c8bfa8;background:none;color:#7a6a2f;padding:9px 14px;border-radius:8px;
-    cursor:pointer;font-size:13px;font-weight:600;width:100%;}
+    cursor:pointer;font-size:13px;font-weight:600;width:100%;margin-bottom:6px;}
   .addbtn:hover{background:#f3eee2;}
-  .secttl{font-size:11px;color:var(--ink-soft);margin:26px 0 10px;border-top:1px solid var(--line);padding-top:16px;}
+  .secttl{font-size:12px;color:#4a4437;font-weight:700;margin:26px 0 10px;border-top:1px solid var(--line);padding-top:16px;
+    font-family:'Space Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;}
+  .subttl{font-size:11px;color:var(--gold);margin:16px 0 8px;font-family:'Space Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;}
+  .thumb{max-width:150px;max-height:104px;border-radius:6px;border:1px solid var(--line);display:block;margin:6px 0;object-fit:cover;}
+  .fchip{display:inline-flex;align-items:center;gap:8px;background:#eef3ea;border:1px solid #cfe0c8;
+    color:#3a5a34;font-size:12px;padding:5px 10px;border-radius:20px;margin:6px 0;}
+  input[type=file]{padding:8px;background:#fff;font-size:13px;border:1px solid #d9d4c8;border-radius:8px;width:100%;}
+  .sectionbox{border:1px solid var(--gold-bright);border-radius:12px;padding:16px;margin-bottom:16px;background:#fcfaf3;position:relative;}
 
   .prevwrap{background:#e6e2d9;padding:22px;overflow-y:auto;}
   .prevflag{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-soft);margin-bottom:12px;}
   .dot{width:8px;height:8px;border-radius:50%;background:#3a9a5a;box-shadow:0 0 0 3px rgba(58,154,90,.2);}
   .card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:30px 30px 34px;}
   .card .side-lbl{font-size:10px;color:var(--gold);}
-  .card .p-title{font-size:34px;margin:6px 0 2px;line-height:1.05;}
+  .card .p-title{font-size:32px;margin:6px 0 2px;line-height:1.05;}
   .card .p-tag{font-family:'Libre Caslon Display',serif;font-style:italic;font-size:16px;color:var(--ink-soft);margin:0 0 18px;}
-  .card .p-intro p{font-size:15px;color:#3d3a33;margin:0 0 12px;}
-  .card .p-list-lbl{font-size:10px;color:var(--ink-soft);margin:22px 0 8px;border-top:1px solid var(--line);padding-top:14px;}
+  .card .p-intro p{font-size:14px;color:#3d3a33;margin:0 0 12px;}
+  .card .p-list-lbl{font-size:10px;color:var(--ink-soft);margin:22px 0 8px;border-top:1px solid var(--line);padding-top:14px;
+    font-family:'Space Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;}
   .trk{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);}
   .trk .t{font-weight:600;font-size:14px;}
   .trk .m{font-size:12px;color:var(--ink-soft);}
@@ -96,13 +104,6 @@
   .creds div{font-size:12px;}
   .creds .k{color:var(--ink-soft);}
   .creds .v{color:var(--ink);font-weight:600;}
-
-  .filepreview{margin-top:7px;}
-  .fchip{display:inline-flex;align-items:center;gap:8px;background:#eef3ea;border:1px solid #cfe0c8;
-    color:#3a5a34;font-size:12px;padding:5px 10px;border-radius:20px;}
-  .fchip .fx{border:none;background:#d7e5cf;color:#3a5a34;border-radius:50%;width:18px;height:18px;cursor:pointer;line-height:1;}
-  .field input[type=file]{padding:8px;background:#fff;font-size:13px;}
-
   .pcard{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px;background:#fff;}
   .pcard .pt{font-weight:600;font-size:15px;}
   .pcard .pm{font-size:12px;color:var(--ink-soft);margin-bottom:2px;}
@@ -113,6 +114,10 @@
   .pcard .mbtn{font-size:12px;padding:6px 12px;border-radius:7px;text-decoration:none;font-weight:600;
     border:1px solid var(--gold);color:var(--gold);display:inline-flex;gap:6px;align-items:center;}
   .pcard .mbtn.pdf{border-color:#b3453a;color:#b3453a;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;margin:8px 0 4px;}
+  .grid figure{margin:0;}
+  .grid img{width:100%;height:70px;object-fit:cover;border-radius:6px;border:1px solid var(--line);}
+  .grid figcaption{font-size:9px;color:var(--ink-soft);margin-top:2px;line-height:1.25;}
 
   .savebar{position:sticky;bottom:0;margin-top:26px;background:#fbf9f4;border:1px solid var(--line);
     border-radius:11px;padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
@@ -130,7 +135,6 @@
 </head>
 <body>
 
-  <!-- ============ LOGIN GATE ============ -->
   <div class="gate" id="gate">
     <div class="box">
       <span class="badge">Your Editor</span>
@@ -142,13 +146,12 @@
     </div>
   </div>
 
-  <!-- ============ EDITOR (hidden until logged in) ============ -->
   <div id="app" style="display:none;">
     <div class="banner">
       <span class="badge">Your Editor</span>
       <div>
         <h1>Your website's control panel</h1>
-        <p>Pick a section, change any box, watch the <b>live preview</b>, then press <b>Publish</b>.</p>
+        <p>Pick a section, change anything, watch the <b>live preview</b>, then press <b>Publish</b>.</p>
       </div>
       <span class="spacer"></span>
       <span class="who" id="whoami"></span>
@@ -185,291 +188,348 @@
 
 <script>
 /* ===================== CONFIG ===================== */
-const REPO   = 'mzmzm518/portfoliowebsite';
-const BRANCH = 'main';
-const API    = 'https://api.github.com';
-const NAV_DESC = {
-  about:'The person behind it', copywriting:'Words that sell & stick',
-  concepts:'Big ideas & visuals', sound:'Audio & sonic identity', film:'Motion & moving image'
-};
-
+const REPO='mzmzm518/portfoliowebsite', BRANCH='main', API='https://api.github.com';
+const NAV_DESC={about:'The person behind it',copywriting:'Words that sell & stick',
+  concepts:'Photos, design & galleries',sound:'Audio & sonic identity',film:'Motion & moving image'};
 let token=null, data=null, current=null, rec=null, authWin=null;
 const esc=s=>String(s==null?'':s);
 const $=id=>document.getElementById(id);
+const el=(t,c)=>{const e=document.createElement(t); if(c)e.className=c; return e;};
 
 /* ===================== LOGIN ===================== */
-$('loginBtn').onclick = ()=>{
-  $('loginErr').textContent='';
-  authWin = window.open('/api/auth','gh-login','width=640,height=760');
-  if(!authWin){ $('loginErr').textContent='Please allow popups for this site, then try again.'; }
-};
-$('logoutBtn').onclick = (e)=>{ e.preventDefault(); localStorage.removeItem('gh_token'); location.reload(); };
-
-// Receive the token from the /api/callback popup (Decap/Sveltia message protocol).
-window.addEventListener('message', (e)=>{
-  const d = e.data;
-  if(d === 'authorizing:github'){ if(authWin) authWin.postMessage('authorizing:github', '*'); return; }
-  if(typeof d !== 'string') return;
+$('loginBtn').onclick=()=>{ $('loginErr').textContent='';
+  authWin=window.open('/api/auth','gh-login','width=640,height=760');
+  if(!authWin)$('loginErr').textContent='Please allow popups for this site, then try again.'; };
+$('logoutBtn').onclick=e=>{ e.preventDefault(); localStorage.removeItem('gh_token'); location.reload(); };
+window.addEventListener('message',e=>{
+  const d=e.data;
+  if(d==='authorizing:github'){ if(authWin)authWin.postMessage('authorizing:github','*'); return; }
+  if(typeof d!=='string') return;
   const OK='authorization:github:success:', ERR='authorization:github:error:';
-  if(d.indexOf(OK)===0){
-    try{ token = JSON.parse(d.slice(OK.length)).token; }catch(_){}
-    if(authWin) authWin.close();
-    if(token){ localStorage.setItem('gh_token', token); startApp(); }
-  } else if(d.indexOf(ERR)===0){
-    let msg='Login failed.'; try{ msg=JSON.parse(d.slice(ERR.length)).message||msg; }catch(_){}
-    $('loginErr').textContent = msg;
-  }
+  if(d.indexOf(OK)===0){ try{token=JSON.parse(d.slice(OK.length)).token;}catch(_){}
+    if(authWin)authWin.close(); if(token){localStorage.setItem('gh_token',token); startApp();} }
+  else if(d.indexOf(ERR)===0){ let m='Login failed.'; try{m=JSON.parse(d.slice(ERR.length)).message||m;}catch(_){}
+    $('loginErr').textContent=m; }
 });
+async function validateToken(t){ try{const r=await fetch(API+'/user',{headers:{Authorization:'token '+t}});
+  return r.ok?await r.json():null;}catch(_){return null;} }
+(async()=>{ const s=localStorage.getItem('gh_token');
+  if(s){const u=await validateToken(s); if(u){token=s; startApp(u);}} })();
 
-async function validateToken(t){
-  try{ const r=await fetch(API+'/user',{headers:{Authorization:'token '+t}}); return r.ok?await r.json():null; }
-  catch(_){ return null; }
-}
-
-// On load: reuse a stored token if it still works.
-(async ()=>{
-  const stored = localStorage.getItem('gh_token');
-  if(stored){ const u=await validateToken(stored); if(u){ token=stored; startApp(u); } }
-})();
-
-/* ===================== APP INIT ===================== */
+/* ===================== INIT ===================== */
 async function startApp(user){
-  $('gate').style.display='none';
-  $('app').style.display='block';
-  if(!user) user=await validateToken(token);
-  $('whoami').textContent = user? ('Signed in as '+(user.login||'')) : '';
-  try{
-    const r=await fetch('content.json',{cache:'no-store'});
-    data=await r.json();
+  $('gate').style.display='none'; $('app').style.display='block';
+  if(!user)user=await validateToken(token);
+  $('whoami').textContent=user?('Signed in as '+(user.login||'')):'';
+  try{ const r=await fetch('content.json',{cache:'no-store'}); data=await r.json();
     buildNav(); select(data.records[0].id);
-  }catch(e){
-    $('form').innerHTML='<p style="color:#a33">Couldn\'t load your content. Please refresh.</p>';
-  }
+  }catch(e){ $('form').innerHTML='<p style="color:#a33">Couldn\'t load your content. Please refresh.</p>'; }
 }
-
-/* ===================== NAV / FORM / PREVIEW ===================== */
-function buildNav(){
-  const n=$('nav'); n.innerHTML='';
-  data.records.forEach(r=>{
-    const b=document.createElement('button');
-    b.className='navbtn'; b.dataset.id=r.id;
+function buildNav(){ const n=$('nav'); n.innerHTML='';
+  data.records.forEach(r=>{ const b=el('button','navbtn'); b.dataset.id=r.id;
     b.innerHTML=`<div class="code">${esc(r.no)}</div><div class="n">${esc(r.label)}</div>
       <div class="d">${esc(NAV_DESC[r.id]||r.desc||'')}</div>`;
-    b.onclick=()=>select(r.id);
-    n.appendChild(b);
-  });
+    b.onclick=()=>select(r.id); n.appendChild(b); });
 }
-
-function select(id){
-  current=id;
-  rec=data.records.find(r=>r.id===id);          // reference — edits persist in `data`
+function select(id){ current=id; rec=data.records.find(r=>r.id===id);
   document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
   $('editName').textContent=rec.label;
   $('editHint').textContent = id==='about'
-    ? 'This is your “About Me”. Change your bio, or add/edit a job in your experience list.'
-    : 'Edit the text, taglines, and the list of projects for this section.';
+    ? 'Your “About Me”: bio, photos, experience, education and certifications.'
+    : 'Everything on this section — text, projects, images and galleries.';
   buildForm(); renderPreview();
 }
+const redraw=()=>{ buildForm(); renderPreview(); };
 
+/* ===================== SMALL BUILDERS ===================== */
 function field(label,help,value,onInput,textarea){
-  const w=document.createElement('div'); w.className='field';
-  const tag=textarea?'textarea':'input';
-  w.innerHTML=`<label>${label}</label>${help?`<div class="help">${help}</div>`:''}
-    <${tag} ${textarea?'rows="3"':''}></${tag}>`;
-  const el=w.querySelector(textarea?'textarea':'input');
-  el.value=esc(value);
-  el.addEventListener('input',()=>{ onInput(el.value); renderPreview(); });
+  const w=el('div','field'), tag=textarea?'textarea':'input';
+  w.innerHTML=`<label>${label}</label>${help?`<div class="help">${help}</div>`:''}<${tag} ${textarea?'rows="3"':''}></${tag}>`;
+  const i=w.querySelector(tag); i.value=esc(value);
+  i.addEventListener('input',()=>{ onInput(i.value); renderPreview(); });
   return w;
 }
+function addBtn(text,fn){ const b=el('button','addbtn'); b.textContent=text; b.onclick=fn; return b; }
+function moveCtrls(arr,i){
+  const m=el('div','mv');
+  const up=el('button'); up.textContent='▲'; up.title='Move up'; up.onclick=()=>{ if(i>0){[arr[i-1],arr[i]]=[arr[i],arr[i-1]]; redraw();} };
+  const dn=el('button'); dn.textContent='▼'; dn.title='Move down'; dn.onclick=()=>{ if(i<arr.length-1){[arr[i+1],arr[i]]=[arr[i],arr[i+1]]; redraw();} };
+  m.appendChild(up); m.appendChild(dn); return m;
+}
+// File chooser bound to obj[key]; real upload happens on Publish.
+function mediaField(label,help,accept,obj,key,isImage){
+  const w=el('div','field');
+  w.innerHTML=`<label>${label}</label>${help?`<div class="help">${help}</div>`:''}`;
+  const holder=el('div');
+  function draw(){
+    holder.innerHTML='';
+    const val=obj[key], f=obj['__file_'+key];
+    if(val){
+      if(isImage){ const img=el('img','thumb'); img.src=val; holder.appendChild(img); }
+      else { const c=el('span','fchip'); c.textContent='📎 '+(f?f.name:val.split('/').pop()); holder.appendChild(c); }
+    }
+    const inp=el('input'); inp.type='file'; inp.accept=accept;
+    inp.onchange=()=>{ const file=inp.files[0]; if(!file)return;
+      if(obj[key]&&obj['__prev_'+key])URL.revokeObjectURL(obj[key]);
+      obj['__file_'+key]=file; obj[key]=URL.createObjectURL(file); obj['__prev_'+key]=1; draw(); renderPreview(); };
+    holder.appendChild(inp);
+    if(val){ const rmv=el('button','addbtn'); rmv.style.marginTop='6px'; rmv.textContent='Remove';
+      rmv.onclick=()=>{ if(obj[key]&&obj['__prev_'+key])URL.revokeObjectURL(obj[key]);
+        delete obj[key]; delete obj['__file_'+key]; delete obj['__prev_'+key]; draw(); renderPreview(); };
+      holder.appendChild(rmv); }
+  }
+  draw(); w.appendChild(holder); return w;
+}
+// Editable image gallery: each entry {image,title,caption}
+function galleryEditor(gallery,addLabel){
+  const box=el('div');
+  gallery.forEach((g,i)=>{
+    const grp=el('div','group');
+    grp.appendChild(moveCtrls(gallery,i));
+    const rm=el('button','rm'); rm.textContent='×'; rm.title='Remove image';
+    rm.onclick=()=>{ gallery.splice(i,1); redraw(); }; grp.appendChild(rm);
+    const tag=el('div','gtag mono'); tag.textContent='Image '+(i+1); grp.appendChild(tag);
+    grp.appendChild(mediaField('Picture','JPG or PNG.','image/png,image/jpeg',g,'image',true));
+    grp.appendChild(field('Title','Short name for this image.',g.title,v=>g.title=v));
+    grp.appendChild(field('Caption','One line describing it.',g.caption,v=>g.caption=v,true));
+    box.appendChild(grp);
+  });
+  box.appendChild(addBtn(addLabel||'+ Add an image',()=>{ gallery.push({image:'',title:'',caption:''}); redraw(); }));
+  return box;
+}
+// A titled section with its own gallery (Visual Work sections, Live Events)
+function sectionFields(sec){
+  const box=el('div');
+  box.appendChild(field('Section title','',sec.title,v=>sec.title=v));
+  box.appendChild(field('Short subtitle','',sec.subtitle,v=>sec.subtitle=v));
+  box.appendChild(field('Introduction','A short paragraph for this section.',sec.body,v=>sec.body=v,true));
+  const gl=el('div','subttl'); gl.textContent='Images in this section'; box.appendChild(gl);
+  sec.gallery=sec.gallery||[]; box.appendChild(galleryEditor(sec.gallery,'+ Add an image to this section'));
+  return box;
+}
 
+/* ===================== BUILD FORM ===================== */
 function buildForm(){
   const f=$('form'); f.innerHTML='';
+
+  // core
   f.appendChild(field('Section title','The big heading on this section.',rec.title,v=>rec.title=v));
   f.appendChild(field('Tagline','One short line under the title.',rec.tagline,v=>rec.tagline=v));
   f.appendChild(field('Short description','The one-liner shown in the home list.',rec.desc,v=>rec.desc=v));
+  if('listLabel' in rec) f.appendChild(field('List heading','e.g. PROJECTS, EXPERIENCE, SNIPPETS.',rec.listLabel,v=>rec.listLabel=v));
+  f.appendChild(mediaField('Record cover image','The square image for this section on the home screen.','image/png,image/jpeg',rec,'image',true));
 
-  const introTtl=document.createElement('div'); introTtl.className='secttl mono';
-  introTtl.textContent = current==='about' ? 'Your bio (paragraphs)' : 'Intro paragraphs';
-  f.appendChild(introTtl);
+  // intro paragraphs
+  f.appendChild(secTitle(current==='about'?'Your bio (paragraphs)':'Intro paragraphs'));
   rec.intro=rec.intro||[];
-  rec.intro.forEach((p,i)=>{
-    const g=document.createElement('div'); g.className='group';
-    g.innerHTML=`<div class="gtag mono">Paragraph ${i+1}</div><button class="rm" title="Remove">×</button>`;
-    g.querySelector('.rm').onclick=()=>{rec.intro.splice(i,1);buildForm();renderPreview();};
-    g.appendChild(field('','',p,v=>rec.intro[i]=v,true));
-    f.appendChild(g);
-  });
-  f.appendChild(addBtn('+ Add a paragraph',()=>{rec.intro.push('New paragraph…');buildForm();renderPreview();}));
+  rec.intro.forEach((p,i)=>{ const g=grpWithControls(rec.intro,i,'Paragraph '+(i+1));
+    g.appendChild(field('','',p,v=>rec.intro[i]=v,true)); f.appendChild(g); });
+  f.appendChild(addBtn('+ Add a paragraph',()=>{ rec.intro.push('New paragraph…'); redraw(); }));
 
-  const itemsTtl=document.createElement('div'); itemsTtl.className='secttl mono';
-  itemsTtl.textContent = current==='about' ? 'Your experience (jobs)' : 'Projects / tracklist';
-  f.appendChild(itemsTtl);
+  // About photos
+  if(current==='about'){
+    if(!rec.aboutPhotoObjs) rec.aboutPhotoObjs=(rec.aboutPhotos||[]).map(p=>({path:p}));
+    f.appendChild(secTitle('Your photos'));
+    rec.aboutPhotoObjs.forEach((o,i)=>{ const g=grpWithControls(rec.aboutPhotoObjs,i,'Photo '+(i+1));
+      g.appendChild(mediaField('Picture','JPG or PNG.','image/png,image/jpeg',o,'path',true)); f.appendChild(g); });
+    f.appendChild(addBtn('+ Add a photo',()=>{ rec.aboutPhotoObjs.push({path:''}); redraw(); }));
+  }
+
+  // items / projects
+  f.appendChild(secTitle(current==='about'?'Your experience (jobs)':'Projects'));
   rec.items=rec.items||[];
   rec.items.forEach((it,i)=>{
-    const g=document.createElement('div'); g.className='group';
-    g.innerHTML=`<div class="gtag mono">${current==='about'?'Job':'Project'} ${i+1}</div><button class="rm" title="Remove">×</button>`;
-    g.querySelector('.rm').onclick=()=>{rec.items.splice(i,1);buildForm();renderPreview();};
+    const g=grpWithControls(rec.items,i,(current==='about'?'Job ':'Project ')+(i+1));
     g.appendChild(field(current==='about'?'Role / title':'Title','',it.title,v=>rec.items[i].title=v));
     g.appendChild(field(current==='about'?'Company / detail':'Subtitle','',it.meta,v=>rec.items[i].meta=v));
-    const row=document.createElement('div'); row.className='row2';
+    const row=el('div','row2');
     row.appendChild(field('Year','',it.year,v=>rec.items[i].year=v));
     row.appendChild(field(current==='about'?'Dates':'Duration','',it.dur,v=>rec.items[i].dur=v));
     g.appendChild(row);
     if(current!=='about'){
       g.appendChild(field('Description','A sentence or two about this project. (Optional)',it.body,v=>rec.items[i].body=v,true));
-      g.appendChild(uploadField('Photo — JPG / PNG','A picture of the work. (Optional)','image/png,image/jpeg',it,'image'));
-      g.appendChild(uploadField('Short video — MP4 (~30s)','Keep it short. MP4 plays everywhere; for longer videos paste a link below instead. (Optional)','video/mp4',it,'video'));
-      g.appendChild(uploadField('PDF — deck, writing sample, résumé…','A file people can open or download. (Optional)','application/pdf',it,'pdf'));
-      const lr=document.createElement('div'); lr.className='row2';
-      lr.appendChild(field('Link','Paste a link — published work, YouTube, etc. (Optional)',it.link,v=>rec.items[i].link=v));
+      g.appendChild(mediaField('Photo — JPG / PNG','A single picture for this project. (Optional)','image/png,image/jpeg',it,'image',true));
+      g.appendChild(mediaField('Short video — MP4 (~30s)','MP4 plays everywhere. For longer videos use the link below. (Optional)','video/mp4',it,'video',false));
+      g.appendChild(mediaField('PDF','A file people can open or download. (Optional)','application/pdf',it,'pdf',false));
+      const lr=el('div','row2');
+      lr.appendChild(field('Link','A link — YouTube, published work, etc. (Optional)',it.link,v=>rec.items[i].link=v));
       lr.appendChild(field('Link text','What the button says, e.g. “Watch it”.',it.linkLabel,v=>rec.items[i].linkLabel=v));
       g.appendChild(lr);
+      // per-project gallery (e.g. Copywriting examples)
+      if(it.gallery){ const gt=el('div','subttl'); gt.textContent='Gallery of examples'; g.appendChild(gt);
+        g.appendChild(galleryEditor(it.gallery,'+ Add an example image')); }
+      else g.appendChild(addBtn('+ Add an image gallery to this project',()=>{ it.gallery=[]; redraw(); }));
     }
     f.appendChild(g);
   });
   f.appendChild(addBtn(current==='about'?'+ Add a job':'+ Add a project',
-    ()=>{rec.items.push({title:'New '+(current==='about'?'role':'project'),meta:'',year:'',dur:''});buildForm();renderPreview();}));
+    ()=>{ rec.items.push({title:'New '+(current==='about'?'role':'project'),meta:'',year:'',dur:''}); redraw(); }));
 
-  const cTtl=document.createElement('div'); cTtl.className='secttl mono'; cTtl.textContent='Credits';
-  f.appendChild(cTtl);
+  // Visual Work sections
+  if(rec.visualSections){
+    f.appendChild(secTitle('Sections (Photography, Graphic Design, …)'));
+    rec.visualSections.forEach((sec,i)=>{
+      const box=el('div','sectionbox'); box.appendChild(moveCtrls(rec.visualSections,i));
+      const rm=el('button','rm'); rm.textContent='×'; rm.title='Remove section';
+      rm.onclick=()=>{ rec.visualSections.splice(i,1); redraw(); }; box.appendChild(rm);
+      box.appendChild(sectionFields(sec)); f.appendChild(box);
+    });
+    f.appendChild(addBtn('+ Add a section',()=>{ rec.visualSections.push({title:'New section',subtitle:'',body:'',gallery:[]}); redraw(); }));
+  }
+
+  // Live Events (single section, e.g. Film)
+  if(rec.liveEvents){
+    f.appendChild(secTitle('Live Events'));
+    const box=el('div','sectionbox'); box.appendChild(sectionFields(rec.liveEvents)); f.appendChild(box);
+  }
+
+  // credits
+  f.appendChild(secTitle('Credits'));
   rec.credits=rec.credits||[];
-  rec.credits.forEach((c,i)=>{
-    const g=document.createElement('div'); g.className='group';
-    g.innerHTML=`<div class="gtag mono">Credit ${i+1}</div><button class="rm" title="Remove">×</button>`;
-    g.querySelector('.rm').onclick=()=>{rec.credits.splice(i,1);buildForm();renderPreview();};
-    const row=document.createElement('div'); row.className='row2';
+  rec.credits.forEach((c,i)=>{ const g=grpWithControls(rec.credits,i,'Credit '+(i+1));
+    const row=el('div','row2');
     row.appendChild(field('Label','',c.k,v=>rec.credits[i].k=v));
     row.appendChild(field('Value','',c.v,v=>rec.credits[i].v=v));
-    g.appendChild(row);
-    f.appendChild(g);
-  });
-  f.appendChild(addBtn('+ Add a credit',()=>{rec.credits.push({k:'Label',v:'Value'});buildForm();renderPreview();}));
-}
+    g.appendChild(row); f.appendChild(g); });
+  f.appendChild(addBtn('+ Add a credit',()=>{ rec.credits.push({k:'Label',v:'Value'}); redraw(); }));
 
-function addBtn(text,fn){ const b=document.createElement('button'); b.className='addbtn'; b.textContent=text; b.onclick=fn; return b; }
-
-// Choose-a-file control. Keeps the real File on the item (in a __file_ key that is
-// stripped before saving); the actual upload to GitHub happens on Publish.
-function uploadField(label,help,accept,item,key){
-  const w=document.createElement('div'); w.className='field';
-  w.innerHTML=`<label>${label}</label>${help?`<div class="help">${help}</div>`:''}
-    <input type="file" accept="${accept}"><div class="filepreview"></div>`;
-  const inp=w.querySelector('input'), pv=w.querySelector('.filepreview');
-  function draw(){
-    const nm = item['__file_'+key] ? item['__file_'+key].name : (item[key] ? item[key].split('/').pop() : '');
-    if(nm){
-      pv.innerHTML=`<span class="fchip">📎 ${esc(nm)} <button class="fx" title="Remove">×</button></span>`;
-      pv.querySelector('.fx').onclick=()=>{
-        if(item[key] && item['__preview_'+key]) URL.revokeObjectURL(item[key]);
-        delete item[key]; delete item['__file_'+key]; delete item['__preview_'+key];
-        inp.value=''; draw(); renderPreview();
-      };
-    } else pv.innerHTML='';
+  // Education (About)
+  if(rec.education){
+    f.appendChild(secTitle('Education'));
+    rec.education.forEach((e,i)=>{ const g=grpWithControls(rec.education,i,'School '+(i+1));
+      g.appendChild(field('School','',e.school,v=>e.school=v));
+      g.appendChild(field('Degree','',e.degree,v=>e.degree=v));
+      const row=el('div','row2');
+      row.appendChild(field('Years','',e.yr,v=>e.yr=v));
+      row.appendChild(field('Note','e.g. Honours (optional)',e.note,v=>e.note=v));
+      g.appendChild(row); f.appendChild(g); });
+    f.appendChild(addBtn('+ Add a school',()=>{ rec.education.push({school:'',degree:'',yr:'',note:''}); redraw(); }));
   }
-  inp.addEventListener('change',()=>{
-    const file=inp.files[0]; if(!file) return;
-    item['__file_'+key]=file;
-    item[key]=URL.createObjectURL(file);      // preview only; replaced with repo path on Publish
-    item['__preview_'+key]=true;
-    draw(); renderPreview();
-  });
-  draw();
-  return w;
+
+  // Certifications (About)
+  if(rec.certs){
+    f.appendChild(secTitle('Certifications'));
+    rec.certs.forEach((c,i)=>{ const g=grpWithControls(rec.certs,i,'Certification '+(i+1));
+      g.appendChild(field('Name','',c.name,v=>c.name=v));
+      const row=el('div','row2');
+      row.appendChild(field('Organization','',c.org,v=>c.org=v));
+      row.appendChild(field('Year','',c.yr,v=>c.yr=v));
+      g.appendChild(row); f.appendChild(g); });
+    f.appendChild(addBtn('+ Add a certification',()=>{ rec.certs.push({name:'',org:'',yr:''}); redraw(); }));
+    if('certsMore' in rec) f.appendChild(field('Certifications footnote','e.g. + additional platform certifications',rec.certsMore,v=>rec.certsMore=v));
+  }
+}
+function secTitle(t){ const d=el('div','secttl'); d.textContent=t; return d; }
+function grpWithControls(arr,i,tagText){
+  const g=el('div','group'); g.appendChild(moveCtrls(arr,i));
+  const rm=el('button','rm'); rm.textContent='×'; rm.title='Remove';
+  rm.onclick=()=>{ arr.splice(i,1); redraw(); }; g.appendChild(rm);
+  const tag=el('div','gtag mono'); tag.textContent=tagText; g.appendChild(tag);
+  return g;
 }
 
+/* ===================== PREVIEW ===================== */
+function grid(gal){ if(!gal||!gal.length)return '';
+  return `<div class="grid">${gal.map(g=>`<figure><img src="${esc(g.image)}" alt="">${g.title?`<figcaption>${esc(g.title)}</figcaption>`:''}</figure>`).join('')}</div>`; }
 function renderPreview(){
   const p=$('preview');
   const intro=(rec.intro||[]).map(x=>`<p>${esc(x)}</p>`).join('');
-  let itemsHtml;
+  let photos = (current==='about' && rec.aboutPhotoObjs) ? grid(rec.aboutPhotoObjs.map(o=>({image:o.path}))) : '';
+  let itemsHtml='';
   if(current==='about'){
-    itemsHtml=(rec.items||[]).map(it=>`<div class="trk">
-      <div><div class="t">${esc(it.title)}</div><div class="m">${esc(it.meta)}</div></div>
-      <div class="y">${esc(it.year||it.dur)}</div></div>`).join('');
+    itemsHtml=(rec.items||[]).map(it=>`<div class="trk"><div><div class="t">${esc(it.title)}</div>
+      <div class="m">${esc(it.meta)}</div></div><div class="y">${esc(it.year||it.dur)}</div></div>`).join('');
   } else {
     itemsHtml=(rec.items||[]).map(it=>{
-      let media='';
-      if(it.image) media+=`<img class="pimg" src="${esc(it.image)}" alt="">`;
-      if(it.video) media+=`<video src="${esc(it.video)}" controls preload="metadata"></video>`;
-      const btns=[];
-      if(it.pdf)  btns.push(`<a class="mbtn pdf" href="${esc(it.pdf)}" target="_blank">📄 ${esc(it.pdfLabel||'View PDF')}</a>`);
-      if(it.link) btns.push(`<a class="mbtn" href="${esc(it.link)}" target="_blank">🔗 ${esc(it.linkLabel||'Open link')}</a>`);
-      const btnsHtml=btns.length?`<div class="btns">${btns.join('')}</div>`:'';
-      return `<div class="pcard">
-        <div class="pt">${esc(it.title)}</div>
+      let media=''; if(it.image)media+=`<img class="pimg" src="${esc(it.image)}" alt="">`;
+      if(it.video)media+=`<video src="${esc(it.video)}" controls preload="metadata"></video>`;
+      const btns=[]; if(it.pdf)btns.push(`<a class="mbtn pdf" href="${esc(it.pdf)}" target="_blank">📄 ${esc(it.pdfLabel||'View PDF')}</a>`);
+      if(it.link)btns.push(`<a class="mbtn" href="${esc(it.link)}" target="_blank">🔗 ${esc(it.linkLabel||'Open link')}</a>`);
+      return `<div class="pcard"><div class="pt">${esc(it.title)}</div>
         <div class="pm">${esc(it.meta)}${it.year?' · '+esc(it.year):''}</div>
-        ${it.body?`<div class="pb">${esc(it.body)}</div>`:''}
-        ${media}${btnsHtml}</div>`;
+        ${it.body?`<div class="pb">${esc(it.body)}</div>`:''}${media}${grid(it.gallery)}
+        ${btns.length?`<div class="btns">${btns.join('')}</div>`:''}</div>`;
     }).join('');
   }
+  let sections=(rec.visualSections||[]).map(s=>`<div class="pcard"><div class="pt">${esc(s.title)}</div>
+    <div class="pm">${esc(s.subtitle)}</div>${s.body?`<div class="pb">${esc(s.body)}</div>`:''}${grid(s.gallery)}</div>`).join('');
+  if(rec.liveEvents){ const s=rec.liveEvents; sections+=`<div class="pcard"><div class="pt">${esc(s.title)}</div>
+    <div class="pm">${esc(s.subtitle)}</div>${s.body?`<div class="pb">${esc(s.body)}</div>`:''}${grid(s.gallery)}</div>`; }
   const creds=(rec.credits||[]).map(c=>`<div><div class="k">${esc(c.k)}</div><div class="v">${esc(c.v)}</div></div>`).join('');
+  const edu=(rec.education||[]).map(e=>`<div class="trk"><div><div class="t">${esc(e.school)}</div><div class="m">${esc(e.degree)}</div></div><div class="y">${esc(e.yr)}</div></div>`).join('');
+  const certs=(rec.certs||[]).map(c=>`<div class="trk"><div><div class="t">${esc(c.name)}</div><div class="m">${esc(c.org)}</div></div><div class="y">${esc(c.yr)}</div></div>`).join('');
   p.innerHTML=`
     <div class="side-lbl mono">${esc(rec.side||'')} · ${esc(rec.cat||'')}</div>
     <h3 class="p-title serif">${esc(rec.title)}</h3>
     <p class="p-tag">${esc(rec.tagline)}</p>
     <div class="p-intro">${intro}</div>
-    <div class="p-list-lbl mono">${esc(rec.listLabel||'Tracklist')}</div>
-    ${itemsHtml}
+    ${photos?`<div class="p-list-lbl mono">Photos</div>${photos}`:''}
+    ${itemsHtml?`<div class="p-list-lbl mono">${esc(rec.listLabel||'Projects')}</div>${itemsHtml}`:''}
+    ${sections?`<div class="p-list-lbl mono">Sections</div>${sections}`:''}
+    ${edu?`<div class="p-list-lbl mono">Education</div>${edu}`:''}
+    ${certs?`<div class="p-list-lbl mono">Certifications</div>${certs}`:''}
     <div class="creds">${creds}</div>`;
 }
 
-/* ===================== SAVE (upload files + commit content.json) ===================== */
-function toast(msg,isErr){
-  const t=$('toast'); t.textContent=msg; t.className='toast show'+(isErr?' err':'');
-  setTimeout(()=>t.className='toast',isErr?5200:3400);
-}
-function fileToB64(file){
-  return new Promise((res,rej)=>{ const r=new FileReader();
-    r.onload=()=>res(String(r.result).split(',')[1]); r.onerror=rej; r.readAsDataURL(file); });
-}
-function utf8ToB64(str){ return btoa(unescape(encodeURIComponent(str))); }
+/* ===================== SAVE ===================== */
+function toast(msg,isErr){ const t=$('toast'); t.textContent=msg; t.className='toast show'+(isErr?' err':'');
+  setTimeout(()=>t.className='toast',isErr?5600:3600); }
+function fileToB64(file){ return new Promise((res,rej)=>{ const r=new FileReader();
+  r.onload=()=>res(String(r.result).split(',')[1]); r.onerror=rej; r.readAsDataURL(file); }); }
+function utf8ToB64(s){ return btoa(unescape(encodeURIComponent(s))); }
 function ghUrl(path){ return API+'/repos/'+REPO+'/contents/'+path.split('/').map(encodeURIComponent).join('/'); }
-
-async function ghGetSha(path){
-  const r=await fetch(ghUrl(path)+'?ref='+BRANCH,{headers:{Authorization:'token '+token,Accept:'application/vnd.github+json'}});
-  if(r.status===404) return null;
-  if(!r.ok) throw new Error('Could not read '+path+' ('+r.status+')');
-  return (await r.json()).sha;
-}
-async function ghPut(path,b64,message,sha){
-  const body={message,content:b64,branch:BRANCH}; if(sha) body.sha=sha;
+async function ghGetSha(path){ const r=await fetch(ghUrl(path)+'?ref='+BRANCH,
+  {headers:{Authorization:'token '+token,Accept:'application/vnd.github+json'}});
+  if(r.status===404)return null; if(!r.ok)throw new Error('Could not read '+path+' ('+r.status+')');
+  return (await r.json()).sha; }
+async function ghPut(path,b64,message,sha){ const body={message,content:b64,branch:BRANCH}; if(sha)body.sha=sha;
   const r=await fetch(ghUrl(path),{method:'PUT',
     headers:{Authorization:'token '+token,Accept:'application/vnd.github+json','Content-Type':'application/json'},
     body:JSON.stringify(body)});
-  if(!r.ok) throw new Error('Save failed for '+path+' ('+r.status+'): '+(await r.text()).slice(0,140));
-  return r.json();
+  if(!r.ok)throw new Error('Save failed for '+path+' ('+r.status+'): '+(await r.text()).slice(0,140));
+  return r.json(); }
+// walk the whole content tree for pending file uploads (obj['__file_KEY'])
+function collectUploads(node,out){
+  if(Array.isArray(node)){ node.forEach(n=>collectUploads(n,out)); return; }
+  if(node && typeof node==='object'){
+    Object.keys(node).forEach(k=>{ if(k.indexOf('__file_')===0) out.push({obj:node,key:k.slice(7),file:node[k]}); });
+    Object.keys(node).forEach(k=>{ if(k.indexOf('__')!==0) collectUploads(node[k],out); });
+  }
 }
-
-$('saveBtn').onclick = async ()=>{
-  const btn=$('saveBtn'); if(btn.disabled) return;
-  btn.disabled=true; const orig=btn.textContent; btn.textContent='Publishing…';
+function cleanGalleries(node){
+  if(Array.isArray(node)){ node.forEach(cleanGalleries); return; }
+  if(node && typeof node==='object'){
+    if(Array.isArray(node.gallery)) node.gallery=node.gallery.filter(g=>g&&g.image&&g.image.indexOf('blob:')!==0);
+    Object.keys(node).forEach(k=>{ if(k.indexOf('__')!==0) cleanGalleries(node[k]); });
+  }
+}
+$('saveBtn').onclick=async()=>{
+  const btn=$('saveBtn'); if(btn.disabled)return; btn.disabled=true; const orig=btn.textContent;
   try{
-    // 1) upload any newly chosen files, swap their fields to the committed repo path
-    const pend=[];
-    data.records.forEach(r=>(r.items||[]).forEach(it=>['image','video','pdf'].forEach(key=>{
-      if(it['__file_'+key]) pend.push({it,key,file:it['__file_'+key]});
-    })));
-    for(const p of pend){
-      const safe=p.file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+    // 1) upload all newly chosen files, point their fields at the committed repo path
+    const ups=[]; collectUploads(data,ups);
+    for(const u of ups){
+      const safe=u.file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
       const path='images/uploads/'+Date.now()+'-'+Math.random().toString(36).slice(2,7)+'-'+safe;
       btn.textContent='Uploading '+safe+'…';
-      await ghPut(path, await fileToB64(p.file), 'Upload '+safe+' via editor');
-      if(p.it[p.key] && p.it['__preview_'+p.key]) URL.revokeObjectURL(p.it[p.key]);
-      p.it[p.key]=path; delete p.it['__file_'+p.key]; delete p.it['__preview_'+p.key];
+      await ghPut(path,await fileToB64(u.file),'Upload '+safe+' via editor');
+      if(u.obj[u.key]&&u.obj['__prev_'+u.key])URL.revokeObjectURL(u.obj[u.key]);
+      u.obj[u.key]=path; delete u.obj['__file_'+u.key]; delete u.obj['__prev_'+u.key];
     }
-    // 2) commit content.json (strip internal __ keys)
+    // 2) flatten About photo objects back to string paths
+    data.records.forEach(r=>{ if(r.aboutPhotoObjs) r.aboutPhotos=r.aboutPhotoObjs.map(o=>o.path).filter(p=>p&&p.indexOf('blob:')!==0); });
+    // 3) drop empty gallery images
+    cleanGalleries(data);
+    // 4) commit content.json (strip editor-only keys)
     btn.textContent='Saving text…';
-    const json=JSON.stringify(data,(k,v)=>k.indexOf('__')===0?undefined:v,2);
+    const json=JSON.stringify(data,(k,v)=>(k.indexOf('__')===0||k==='aboutPhotoObjs')?undefined:v,2);
     if(json.indexOf('blob:')!==-1) throw new Error('A file did not finish uploading. Please try again.');
     const sha=await ghGetSha('content.json');
-    await ghPut('content.json', utf8ToB64(json), 'Update site content via editor', sha);
-
+    await ghPut('content.json',utf8ToB64(json),'Update site content via editor',sha);
     toast('✓ Published! Your website updates in about a minute.');
-    buildForm(); renderPreview();
-  }catch(err){
-    toast('⚠ '+err.message, true);
-  }finally{
-    btn.disabled=false; btn.textContent=orig;
-  }
+    redraw();
+  }catch(err){ toast('⚠ '+err.message,true); }
+  finally{ btn.disabled=false; btn.textContent=orig; }
 };
 </script>
 </body>
