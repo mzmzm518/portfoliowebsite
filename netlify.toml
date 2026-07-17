@@ -1,14 +1,7 @@
-# Netlify configuration — tells the host how to serve the site.
+# Netlify configuration (only used if the site is hosted on Netlify).
 #
-# The main page file is "Vinyl Portfolio.dc.html" (kept as-is so the design
-# workflow isn't disrupted). Browsers expect the front door to be "/", so this
-# rewrites the root URL to that file. status = 200 means the visitor's address
-# bar stays a clean "/" — it's a silent rewrite, not a visible redirect.
-
-[[redirects]]
-  from = "/"
-  to = "/Vinyl Portfolio.dc.html"
-  status = 200
+# The home page is index.html at the root, which every host serves at "/"
+# automatically, so no rewrite is needed for the front door.
 
 # Nice-to-have: let visitors reach the editor at /admin (with or without the
 # trailing slash).

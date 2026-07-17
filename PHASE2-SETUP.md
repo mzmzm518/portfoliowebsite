@@ -35,7 +35,7 @@ owns everything.
 3. On the new repo page, click **uploading an existing file** (the link in the
    "Quick setup" box).
 4. Drag in **everything in this project folder** — the whole thing:
-   - `Vinyl Portfolio.dc.html`
+   - `index.html`  (the home page)
    - `content.json`
    - `support.js`
    - the `admin/`, `images/`, and `vendor/` folders
