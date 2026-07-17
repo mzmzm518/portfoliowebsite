@@ -3,17 +3,20 @@
 #  This file defines the editing forms shown at  yoursite.com/admin
 #  It edits ../content.json and uploads images into ../images.
 #
-#  >>> PHASE 2 (hosting) TO-DO — two things to fill in once the repo exists:
-#      1. backend.repo below: set to  "her-github-username/her-repo-name"
-#      2. Wire GitHub login (see PHASE2-SETUP.md). Until then, /admin will
-#         load but won't be able to log in or save.
+#  Editor login is wired for Vercel via the /api/auth + /api/callback
+#  functions in this repo. Remaining setup = register a GitHub OAuth App and
+#  add two keys in Vercel. See EDITOR-LOGIN-VERCEL.md for the exact steps.
 # ============================================================================
 
 backend:
   name: github
-  repo: OWNER/REPO          # <-- Phase 2: e.g.  mariamlokhat/portfolio
+  repo: mzmzm518/portfoliowebsite
   branch: main
-  # base_url / auth is configured during Phase 2 (hosting).
+  # OAuth is handled by this site's own /api/auth function (on Vercel).
+  # If the site ever moves to a custom domain, update base_url to match and
+  # update the GitHub OAuth App's callback URL to <domain>/api/callback.
+  base_url: https://portfoliowebsite-three-blue.vercel.app
+  auth_endpoint: api/auth
 
 # Images uploaded in the editor are saved here, and stored in content.json
 # as a relative path like  images/my-photo.png  (matches the existing site).
