@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to update your website</title>
+  <link rel="stylesheet" href="vendor/fonts.css">
+  <style>
+    :root{
+      --paper:#EDEAE3; --card:#f6f2ea; --ink:#2a2014; --soft:#7a6a52;
+      --gold:#9c7b22; --line:rgba(42,33,26,.14);
+    }
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+      font-family:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,sans-serif;
+      line-height:1.62;-webkit-font-smoothing:antialiased;}
+    .wrap{max-width:760px;margin:0 auto;padding:clamp(28px,5vw,64px) clamp(20px,5vw,40px) 90px;}
+    .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:3px;
+      text-transform:uppercase;color:var(--gold);margin:0 0 14px;}
+    h1{font-family:'Libre Caslon Display',Georgia,serif;font-weight:400;
+      font-size:clamp(30px,6vw,50px);line-height:1.08;margin:0 0 18px;}
+    .lead{font-size:1.12rem;color:#4a3f2e;margin:0 0 8px;}
+    .reassure{background:#eef3e8;border:1px solid #d5e0c6;border-radius:12px;
+      padding:16px 18px;margin:26px 0 8px;font-size:1rem;color:#3f4a30;}
+    .reassure strong{color:#2f3a22;}
+    h2{font-family:'Libre Caslon Display',Georgia,serif;font-weight:400;
+      font-size:clamp(22px,4vw,30px);margin:46px 0 4px;}
+    .step{display:flex;gap:18px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--line);}
+    .num{flex:0 0 42px;height:42px;border-radius:50%;background:var(--ink);color:#f4ecd7;
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Space Mono',monospace;font-size:16px;margin-top:2px;}
+    .step h3{margin:4px 0 6px;font-size:1.18rem;font-weight:700;}
+    .step p{margin:0 0 8px;color:#4a3f2e;}
+    a.btnlink{color:var(--gold);font-weight:700;text-decoration:none;border-bottom:2px solid rgba(156,123,34,.35);}
+    a.btnlink:hover{border-bottom-color:var(--gold);}
+    code{font-family:'Space Mono',monospace;background:#e6dfd0;padding:2px 7px;border-radius:5px;font-size:.9em;}
+    .tips{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:40px;}
+    .tips h2{margin-top:0;}
+    .tips ul{margin:0;padding-left:20px;}
+    .tips li{margin:10px 0;color:#4a3f2e;}
+    .pill{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;
+      letter-spacing:1.5px;text-transform:uppercase;color:#6b5a3f;
+      border:1px solid var(--line);border-radius:30px;padding:3px 11px;margin-bottom:6px;}
+    footer{margin-top:54px;font-size:.92rem;color:var(--soft);text-align:center;}
+    .big{font-size:1.05rem;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="kicker">Your website · Owner's guide</p>
+    <h1>How to update your website</h1>
+    <p class="lead big">Everything on your site — your writing, your photos, your projects — you can change yourself, any time, from one simple page. No code, ever.</p>
+
+    <div class="reassure">
+      <strong>You can’t break anything.</strong> Every change is saved with a full history, so an older version can always be brought back. Explore freely.
+    </div>
+
+    <h2>Making a change, start to finish</h2>
+
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <h3>Open your editor</h3>
+        <p>Go to <a class="btnlink" href="/admin/">yourwebsite.com/admin</a> (add <code>/admin</code> to the end of your site address).</p>
+        <p>Click <strong>Login with GitHub</strong> and sign in with your own account. You only do this the first time on a device.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <h3>Pick the section you want to change</h3>
+        <p>Click <strong>Records &amp; Tracklists</strong>, then choose a section — <em>About, Copywriting, Visual Work, Sound,</em> or <em>Film</em>. Each one is a page on your site.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">3</div>
+      <div>
+        <h3>Edit it</h3>
+        <p>Change any text by typing over it. To add work to a project, use the boxes for:</p>
+        <p style="margin-bottom:4px;">
+          <span class="pill">Photo</span>
+          <span class="pill">Short video</span>
+          <span class="pill">PDF</span>
+          <span class="pill">Link</span>
+          <span class="pill">Description</span>
+        </p>
+        <p>Drag a photo or file straight into its box, or paste a link (like a YouTube video). Everything is optional — add only what you have.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="num">4</div>
+      <div>
+        <h3>Save it</h3>
+        <p>Click <strong>Save</strong> (or <strong>Publish</strong>). Wait about a minute, then refresh your website — your change is there, live for everyone.</p>
+      </div>
+    </div>
+
+    <div class="tips">
+      <h2>Good to know</h2>
+      <ul>
+        <li><strong>Photos:</strong> JPG or PNG work best.</li>
+        <li><strong>Video:</strong> upload short clips as <code>.mp4</code> (they play everywhere). Avoid <code>.mov</code> — many browsers won’t play it. For longer videos, paste a <strong>YouTube or Vimeo link</strong> instead of uploading.</li>
+        <li><strong>Order:</strong> the little code on each section (<code>A1</code>, <code>A2</code>…) sets the order they appear in on your home screen.</li>
+        <li><strong>About page extras:</strong> the Education and Certifications boxes are only used by the <em>About</em> section — leave them empty on the others.</li>
+        <li><strong>Nothing is permanent:</strong> every save is remembered, so a past version can always be restored.</li>
+      </ul>
+    </div>
+
+    <footer>
+      Whenever you’re ready to change something, just open <strong>/admin</strong> and go. It’s yours.
+    </footer>
+  </div>
+</body>
+</html>
