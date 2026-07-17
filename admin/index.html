@@ -346,6 +346,11 @@ function buildForm(){
     row.appendChild(field('Year','',it.year,v=>rec.items[i].year=v));
     row.appendChild(field(current==='about'?'Dates':'Duration','',it.dur,v=>rec.items[i].dur=v));
     g.appendChild(row);
+    // key points — these become the click-to-open dropdown of bullets on the site
+    const ptsTtl=el('div','subttl'); ptsTtl.textContent='Key points (dropdown bullets)'; g.appendChild(ptsTtl);
+    (it.points||[]).forEach((pt,pi)=>{ const pg=grpWithControls(it.points,pi,'Point '+(pi+1));
+      pg.appendChild(field('','',pt,v=>it.points[pi]=v,true)); g.appendChild(pg); });
+    g.appendChild(addBtn('+ Add a key point',()=>{ it.points=it.points||[]; it.points.push('New point…'); redraw(); }));
     if(current!=='about'){
       g.appendChild(field('Description','A sentence or two about this project. (Optional)',it.body,v=>rec.items[i].body=v,true));
       g.appendChild(mediaField('Photo — JPG / PNG','A single picture for this project. (Optional)','image/png,image/jpeg',it,'image',true));
@@ -437,17 +442,22 @@ function renderPreview(){
   let photos = (current==='about' && rec.aboutPhotoObjs) ? grid(rec.aboutPhotoObjs.map(o=>({image:o.path}))) : '';
   let itemsHtml='';
   if(current==='about'){
-    itemsHtml=(rec.items||[]).map(it=>`<div class="trk"><div><div class="t">${esc(it.title)}</div>
-      <div class="m">${esc(it.meta)}</div></div><div class="y">${esc(it.year||it.dur)}</div></div>`).join('');
+    itemsHtml=(rec.items||[]).map(it=>{
+      const pts=(it.points&&it.points.length)?`<ul style="margin:6px 0 0;padding-left:18px;">${it.points.map(p=>`<li style="font-size:12px;color:#5a4b38;margin:2px 0;">${esc(p)}</li>`).join('')}</ul>`:'';
+      return `<div class="trk" style="display:block;"><div style="display:flex;justify-content:space-between;gap:12px;">
+        <div><div class="t">${esc(it.title)}</div><div class="m">${esc(it.meta)}</div></div>
+        <div class="y">${esc(it.year||it.dur)}</div></div>${pts}</div>`;
+    }).join('');
   } else {
     itemsHtml=(rec.items||[]).map(it=>{
       let media=''; if(it.image)media+=`<img class="pimg" src="${esc(it.image)}" alt="">`;
       if(it.video)media+=`<video src="${esc(it.video)}" controls preload="metadata"></video>`;
       const btns=[]; if(it.pdf)btns.push(`<a class="mbtn pdf" href="${esc(it.pdf)}" target="_blank">📄 ${esc(it.pdfLabel||'View PDF')}</a>`);
       if(it.link)btns.push(`<a class="mbtn" href="${esc(it.link)}" target="_blank">🔗 ${esc(it.linkLabel||'Open link')}</a>`);
+      const pts=(it.points&&it.points.length)?`<ul style="margin:6px 0;padding-left:18px;">${it.points.map(p=>`<li style="font-size:12px;color:#3d3a33;margin:2px 0;">${esc(p)}</li>`).join('')}</ul>`:'';
       return `<div class="pcard"><div class="pt">${esc(it.title)}</div>
         <div class="pm">${esc(it.meta)}${it.year?' · '+esc(it.year):''}</div>
-        ${it.body?`<div class="pb">${esc(it.body)}</div>`:''}${media}${grid(it.gallery)}
+        ${it.body?`<div class="pb">${esc(it.body)}</div>`:''}${pts}${media}${grid(it.gallery)}
         ${btns.length?`<div class="btns">${btns.join('')}</div>`:''}</div>`;
     }).join('');
   }

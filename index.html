@@ -241,8 +241,8 @@
                 <div style="font-size:12.5px;font-weight:600;color:#5f4e3a;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ it.meta }}</div>
               </div>
               <span style="font-family:'Space Mono',monospace;font-size:11.5px;color:#8a7a64;flex:0 0 auto;text-align:right;white-space:nowrap;">{{ it.dur }}</span>
-              <!-- view-project CTA (only when the item has media to show) -->
-              <sc-if value="{{ it.hasMedia }}" hint-placeholder-val="{{ true }}">
+              <!-- view-project CTA (only when the item has something to expand) -->
+              <sc-if value="{{ it.hasExpand }}" hint-placeholder-val="{{ true }}">
               <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;background:#241b12;color:#f4ecd7;border-radius:30px;padding:8px 15px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:1.2px;transition:transform .2s ease,background .2s ease;" style-hover="background:#3a2c1c;transform:translateX(2px);">{{ it.ctaText }} <span style="font-size:13px;">{{ it.ctaIcon }}</span></div>
               </sc-if>
             </div>
@@ -253,6 +253,14 @@
 
               <sc-if value="{{ it.hasBody }}" hint-placeholder-val="{{ false }}">
               <p style="margin:0;font-size:14.5px;line-height:1.7;color:#5a4b38;max-width:48ch;">{{ it.body }}</p>
+              </sc-if>
+
+              <sc-if value="{{ it.hasPoints }}" hint-placeholder-val="{{ false }}">
+              <ul style="grid-column:1/-1;margin:0;padding-left:20px;max-width:72ch;">
+                <sc-for list="{{ it.pointsList }}" as="point" hint-placeholder-count="3">
+                <li style="font-size:14px;line-height:1.7;color:#5a4b38;margin-bottom:7px;">{{ point.text }}</li>
+                </sc-for>
+              </ul>
               </sc-if>
 
               <sc-if value="{{ it.hasImage }}" hint-placeholder-val="{{ false }}">
@@ -542,17 +550,20 @@ class Component extends DCLogic {
           : 'aspect-ratio:3/2;object-fit:cover',
       }));
       const hasGallery = galleryItems.length > 0;
+      const pointsList = (Array.isArray(it.points) ? it.points : []).filter(p => p).map(p => ({ text: p }));
+      const hasPoints = pointsList.length > 0;
       const hasMedia = hasImage || hasVideo || hasAudio || hasPdf || hasLink || hasBody || hasGallery;
+      const hasExpand = hasMedia || hasPoints;
       const key = view + ':' + i;
-      const isOpen = hasMedia && !!openItems[key];
+      const isOpen = hasExpand && !!openItems[key];
       return Object.assign({}, it, {
         n: String(i + 1).padStart(2, '0'),
         playing: i === 0,
         bg: discImg,
         discSpin: i === 0 ? 'animation:vinylspin 3s linear infinite' : '',
-        hasImage, hasVideo, hasAudio, hasPdf, hasLink, hasBody, hasYoutube, youtubeEmbed, hasGallery, galleryItems, galleryGridStyle: view === 'copywriting' ? 'grid-template-columns:1fr;max-width:760px;' : 'grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));', hasMedia, isOpen,
-        onToggle: hasMedia ? () => this.toggleItem(key) : () => {},
-        rowCursor: hasMedia ? 'pointer' : 'default',
+        hasImage, hasVideo, hasAudio, hasPdf, hasLink, hasBody, hasYoutube, youtubeEmbed, hasGallery, galleryItems, galleryGridStyle: view === 'copywriting' ? 'grid-template-columns:1fr;max-width:760px;' : 'grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));', hasMedia, hasPoints, pointsList, hasExpand, isOpen,
+        onToggle: hasExpand ? () => this.toggleItem(key) : () => {},
+        rowCursor: hasExpand ? 'pointer' : 'default',
         ctaText: isOpen ? 'CLOSE' : (view === 'copywriting' ? 'VIEW PROJECT' : 'VIEW'),
         ctaIcon: isOpen ? '▴' : '▾',
         linkText: it.linkLabel || 'Open link',
