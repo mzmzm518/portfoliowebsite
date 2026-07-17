@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mariam Lokhat — Content Editor</title>
+</head>
+<body>
+  <!--
+    This is the editing dashboard (the "/admin" page).
+    It loads Sveltia CMS, which reads admin/config.yml (next to this file)
+    and turns content.json into the friendly forms Mariam edits.
+
+    Sveltia is a modern, drop-in replacement for Decap/Netlify CMS:
+    nicer UI, faster, drag-and-drop image upload, and it logs in with GitHub.
+    Only this admin tool loads from the internet — the public site itself
+    stays fully self-contained.
+  -->
+  <!-- Always-visible help link, floating over the editor (and the login screen)
+       so Mariam can always find the how-to guide. Opens in a new tab. -->
+  <a href="/guide.html" target="_blank" rel="noopener"
+     style="position:fixed;z-index:2147483647;right:16px;bottom:16px;
+            background:#2a2014;color:#f4ecd7;font:600 13px/1 system-ui,-apple-system,Segoe UI,sans-serif;
+            padding:12px 18px;border-radius:30px;text-decoration:none;
+            box-shadow:0 6px 20px rgba(0,0,0,.3);">📖 How to edit this site</a>
+
+  <script src="https://unpkg.com/@sveltia/cms@0/dist/sveltia-cms.js"></script>
+</body>
+</html>

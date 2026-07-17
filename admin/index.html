@@ -1,29 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mariam Lokhat — Content Editor</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="/">
+<title>Your Website Editor</title>
+<link href="vendor/fonts.css" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEAE3; --ink:#1b1b1a; --ink-soft:#54514a;
+    --gold:#9c7b22; --gold-bright:#c9a24a; --line:rgba(44,41,32,.14);
+    --card:#f7f5ef; --shadow:0 10px 34px rgba(30,24,14,.10);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Hanken Grotesk',system-ui,sans-serif;line-height:1.5;}
+  .mono{font-family:'Space Mono',monospace;letter-spacing:2px;text-transform:uppercase;}
+  .serif{font-family:'Libre Caslon Display','Fraunces',serif;}
+
+  /* ---- login gate ---- */
+  .gate{position:fixed;inset:0;z-index:50;background:linear-gradient(160deg,#f4f1ea,#e7e2d7);
+    display:flex;align-items:center;justify-content:center;padding:24px;}
+  .gate .box{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);
+    padding:40px 38px;max-width:420px;text-align:center;}
+  .gate .badge{font-size:11px;color:#fff;background:var(--gold);padding:5px 12px;border-radius:20px;
+    font-family:'Space Mono',monospace;letter-spacing:2px;text-transform:uppercase;}
+  .gate h1{font-size:26px;margin:18px 0 6px;}
+  .gate p{color:var(--ink-soft);font-size:14px;margin:0 0 24px;}
+  .gate button{background:#1b1b1a;color:#fff;border:none;border-radius:10px;padding:14px 22px;
+    font-size:15px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:10px;}
+  .gate button:hover{background:#000;}
+  .gate .err{color:#a3392f;font-size:13px;margin-top:16px;min-height:18px;}
+  .gate a.help{display:block;margin-top:20px;font-size:13px;color:var(--gold);}
+
+  /* ---- top banner ---- */
+  .banner{background:linear-gradient(180deg,#fbf9f4,#f1eee6);border-bottom:1px solid var(--line);
+    padding:14px 24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .banner .badge{font-size:11px;color:#fff;background:var(--gold);padding:5px 11px;border-radius:20px;
+    font-family:'Space Mono',monospace;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;}
+  .banner h1{margin:0;font-size:17px;font-weight:600;}
+  .banner p{margin:1px 0 0;font-size:13px;color:var(--ink-soft);}
+  .banner .spacer{flex:1;}
+  .banner .toplink{font-size:13px;color:var(--gold);text-decoration:none;font-weight:600;margin-left:6px;}
+  .banner .who{font-size:12px;color:var(--ink-soft);}
+
+  /* ---- 3-column layout ---- */
+  .wrap{display:grid;grid-template-columns:230px minmax(0,1fr) minmax(0,1fr);gap:0;min-height:calc(100vh - 62px);}
+  @media(max-width:1000px){.wrap{grid-template-columns:1fr;}}
+
+  .side{border-right:1px solid var(--line);padding:20px 14px;background:#f3f0e9;}
+  .side .lbl{font-size:10px;color:var(--ink-soft);margin:0 8px 12px;}
+  .navbtn{display:block;width:100%;text-align:left;border:1px solid transparent;background:none;
+    padding:11px 12px;border-radius:9px;cursor:pointer;margin-bottom:4px;transition:.15s;}
+  .navbtn:hover{background:#eae6dd;}
+  .navbtn.on{background:#fff;border-color:var(--line);box-shadow:0 2px 8px rgba(30,24,14,.06);}
+  .navbtn .n{font-size:15px;font-weight:600;color:var(--ink);}
+  .navbtn .d{font-size:12px;color:var(--ink-soft);margin-top:1px;}
+  .navbtn .code{font-size:10px;color:var(--gold);letter-spacing:2px;font-family:'Space Mono',monospace;}
+
+  .edit{padding:24px 26px;overflow-y:auto;}
+  .edit .panelttl{font-size:11px;color:var(--gold);margin-bottom:2px;}
+  .edit h2{margin:0 0 4px;font-size:26px;}
+  .edit .hint-top{font-size:13px;color:var(--ink-soft);margin:0 0 22px;}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-size:12px;font-weight:600;margin-bottom:5px;color:#3a3730;}
+  .field .help{font-size:12px;color:var(--ink-soft);margin:-2px 0 7px;}
+  .field input,.field textarea{width:100%;padding:10px 12px;border:1px solid #d9d4c8;border-radius:8px;
+    font-family:inherit;font-size:14px;background:#fff;color:var(--ink);resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(156,123,34,.14);}
+  .group{border:1px solid var(--line);border-radius:11px;padding:14px;margin-bottom:14px;background:#faf8f3;position:relative;}
+  .group .gtag{font-size:10px;color:var(--ink-soft);margin-bottom:9px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .rm{position:absolute;top:10px;right:10px;border:none;background:#efe9dd;color:#8a6a1f;
+    width:24px;height:24px;border-radius:6px;cursor:pointer;font-size:15px;line-height:1;}
+  .rm:hover{background:#e5dcc8;}
+  .addbtn{border:1px dashed #c8bfa8;background:none;color:#7a6a2f;padding:9px 14px;border-radius:8px;
+    cursor:pointer;font-size:13px;font-weight:600;width:100%;}
+  .addbtn:hover{background:#f3eee2;}
+  .secttl{font-size:11px;color:var(--ink-soft);margin:26px 0 10px;border-top:1px solid var(--line);padding-top:16px;}
+
+  .prevwrap{background:#e6e2d9;padding:22px;overflow-y:auto;}
+  .prevflag{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink-soft);margin-bottom:12px;}
+  .dot{width:8px;height:8px;border-radius:50%;background:#3a9a5a;box-shadow:0 0 0 3px rgba(58,154,90,.2);}
+  .card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:30px 30px 34px;}
+  .card .side-lbl{font-size:10px;color:var(--gold);}
+  .card .p-title{font-size:34px;margin:6px 0 2px;line-height:1.05;}
+  .card .p-tag{font-family:'Libre Caslon Display',serif;font-style:italic;font-size:16px;color:var(--ink-soft);margin:0 0 18px;}
+  .card .p-intro p{font-size:15px;color:#3d3a33;margin:0 0 12px;}
+  .card .p-list-lbl{font-size:10px;color:var(--ink-soft);margin:22px 0 8px;border-top:1px solid var(--line);padding-top:14px;}
+  .trk{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);}
+  .trk .t{font-weight:600;font-size:14px;}
+  .trk .m{font-size:12px;color:var(--ink-soft);}
+  .trk .y{font-size:12px;color:var(--gold);font-family:'Space Mono',monospace;white-space:nowrap;}
+  .creds{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:20px;}
+  .creds div{font-size:12px;}
+  .creds .k{color:var(--ink-soft);}
+  .creds .v{color:var(--ink);font-weight:600;}
+
+  .filepreview{margin-top:7px;}
+  .fchip{display:inline-flex;align-items:center;gap:8px;background:#eef3ea;border:1px solid #cfe0c8;
+    color:#3a5a34;font-size:12px;padding:5px 10px;border-radius:20px;}
+  .fchip .fx{border:none;background:#d7e5cf;color:#3a5a34;border-radius:50%;width:18px;height:18px;cursor:pointer;line-height:1;}
+  .field input[type=file]{padding:8px;background:#fff;font-size:13px;}
+
+  .pcard{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px;background:#fff;}
+  .pcard .pt{font-weight:600;font-size:15px;}
+  .pcard .pm{font-size:12px;color:var(--ink-soft);margin-bottom:2px;}
+  .pcard .pb{font-size:13px;color:#3d3a33;margin:8px 0;}
+  .pcard img.pimg{max-width:100%;border-radius:8px;display:block;margin:9px 0;}
+  .pcard video{max-width:100%;border-radius:8px;display:block;margin:9px 0;background:#000;}
+  .pcard .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px;}
+  .pcard .mbtn{font-size:12px;padding:6px 12px;border-radius:7px;text-decoration:none;font-weight:600;
+    border:1px solid var(--gold);color:var(--gold);display:inline-flex;gap:6px;align-items:center;}
+  .pcard .mbtn.pdf{border-color:#b3453a;color:#b3453a;}
+
+  .savebar{position:sticky;bottom:0;margin-top:26px;background:#fbf9f4;border:1px solid var(--line);
+    border-radius:11px;padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+  .savebar .save{background:var(--gold);color:#fff;border:none;padding:11px 22px;border-radius:8px;
+    font-weight:600;cursor:pointer;font-size:14px;}
+  .savebar .save:hover{background:#886b1d;}
+  .savebar .save:disabled{opacity:.55;cursor:default;}
+  .savebar small{color:var(--ink-soft);font-size:12px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);opacity:0;
+    background:#26241d;color:#fbf9f4;padding:13px 20px;border-radius:10px;font-size:14px;transition:.25s;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);pointer-events:none;max-width:90vw;z-index:60;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .toast.err{background:#7c2b23;}
+</style>
 </head>
 <body>
-  <!--
-    This is the editing dashboard (the "/admin" page).
-    It loads Sveltia CMS, which reads admin/config.yml (next to this file)
-    and turns content.json into the friendly forms Mariam edits.
 
-    Sveltia is a modern, drop-in replacement for Decap/Netlify CMS:
-    nicer UI, faster, drag-and-drop image upload, and it logs in with GitHub.
-    Only this admin tool loads from the internet — the public site itself
-    stays fully self-contained.
-  -->
-  <!-- Always-visible help link, floating over the editor (and the login screen)
-       so Mariam can always find the how-to guide. Opens in a new tab. -->
-  <a href="/guide.html" target="_blank" rel="noopener"
-     style="position:fixed;z-index:2147483647;right:16px;bottom:16px;
-            background:#2a2014;color:#f4ecd7;font:600 13px/1 system-ui,-apple-system,Segoe UI,sans-serif;
-            padding:12px 18px;border-radius:30px;text-decoration:none;
-            box-shadow:0 6px 20px rgba(0,0,0,.3);">📖 How to edit this site</a>
+  <!-- ============ LOGIN GATE ============ -->
+  <div class="gate" id="gate">
+    <div class="box">
+      <span class="badge">Your Editor</span>
+      <h1 class="serif">Sign in to edit your site</h1>
+      <p>Log in with the GitHub account that owns your website. This keeps your site safe — only you can make changes.</p>
+      <button id="loginBtn"><span style="font-size:18px;">&#128274;</span> Login with GitHub</button>
+      <div class="err" id="loginErr"></div>
+      <a class="help" href="/guide.html" target="_blank">New here? Read the quick guide &rarr;</a>
+    </div>
+  </div>
 
-  <script src="https://unpkg.com/@sveltia/cms@0/dist/sveltia-cms.js"></script>
+  <!-- ============ EDITOR (hidden until logged in) ============ -->
+  <div id="app" style="display:none;">
+    <div class="banner">
+      <span class="badge">Your Editor</span>
+      <div>
+        <h1>Your website's control panel</h1>
+        <p>Pick a section, change any box, watch the <b>live preview</b>, then press <b>Publish</b>.</p>
+      </div>
+      <span class="spacer"></span>
+      <span class="who" id="whoami"></span>
+      <a class="toplink" href="/guide.html" target="_blank">📖 Guide</a>
+      <a class="toplink" href="#" id="logoutBtn">Log out</a>
+    </div>
+
+    <div class="wrap">
+      <nav class="side">
+        <p class="lbl mono">Sections of your site</p>
+        <div id="nav"></div>
+      </nav>
+
+      <section class="edit">
+        <div class="panelttl mono">Now editing</div>
+        <h2 id="editName">—</h2>
+        <p class="hint-top" id="editHint">Change anything below.</p>
+        <div id="form"></div>
+
+        <div class="savebar">
+          <button class="save" id="saveBtn">Publish changes</button>
+          <small id="saveNote">Publishes straight to your live website. Changes appear in about a minute.</small>
+        </div>
+      </section>
+
+      <aside class="prevwrap">
+        <div class="prevflag"><span class="dot"></span> LIVE PREVIEW — how it looks on your site</div>
+        <div class="card" id="preview"></div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+/* ===================== CONFIG ===================== */
+const REPO   = 'mzmzm518/portfoliowebsite';
+const BRANCH = 'main';
+const API    = 'https://api.github.com';
+const NAV_DESC = {
+  about:'The person behind it', copywriting:'Words that sell & stick',
+  concepts:'Big ideas & visuals', sound:'Audio & sonic identity', film:'Motion & moving image'
+};
+
+let token=null, data=null, current=null, rec=null, authWin=null;
+const esc=s=>String(s==null?'':s);
+const $=id=>document.getElementById(id);
+
+/* ===================== LOGIN ===================== */
+$('loginBtn').onclick = ()=>{
+  $('loginErr').textContent='';
+  authWin = window.open('/api/auth','gh-login','width=640,height=760');
+  if(!authWin){ $('loginErr').textContent='Please allow popups for this site, then try again.'; }
+};
+$('logoutBtn').onclick = (e)=>{ e.preventDefault(); localStorage.removeItem('gh_token'); location.reload(); };
+
+// Receive the token from the /api/callback popup (Decap/Sveltia message protocol).
+window.addEventListener('message', (e)=>{
+  const d = e.data;
+  if(d === 'authorizing:github'){ if(authWin) authWin.postMessage('authorizing:github', '*'); return; }
+  if(typeof d !== 'string') return;
+  const OK='authorization:github:success:', ERR='authorization:github:error:';
+  if(d.indexOf(OK)===0){
+    try{ token = JSON.parse(d.slice(OK.length)).token; }catch(_){}
+    if(authWin) authWin.close();
+    if(token){ localStorage.setItem('gh_token', token); startApp(); }
+  } else if(d.indexOf(ERR)===0){
+    let msg='Login failed.'; try{ msg=JSON.parse(d.slice(ERR.length)).message||msg; }catch(_){}
+    $('loginErr').textContent = msg;
+  }
+});
+
+async function validateToken(t){
+  try{ const r=await fetch(API+'/user',{headers:{Authorization:'token '+t}}); return r.ok?await r.json():null; }
+  catch(_){ return null; }
+}
+
+// On load: reuse a stored token if it still works.
+(async ()=>{
+  const stored = localStorage.getItem('gh_token');
+  if(stored){ const u=await validateToken(stored); if(u){ token=stored; startApp(u); } }
+})();
+
+/* ===================== APP INIT ===================== */
+async function startApp(user){
+  $('gate').style.display='none';
+  $('app').style.display='block';
+  if(!user) user=await validateToken(token);
+  $('whoami').textContent = user? ('Signed in as '+(user.login||'')) : '';
+  try{
+    const r=await fetch('content.json',{cache:'no-store'});
+    data=await r.json();
+    buildNav(); select(data.records[0].id);
+  }catch(e){
+    $('form').innerHTML='<p style="color:#a33">Couldn\'t load your content. Please refresh.</p>';
+  }
+}
+
+/* ===================== NAV / FORM / PREVIEW ===================== */
+function buildNav(){
+  const n=$('nav'); n.innerHTML='';
+  data.records.forEach(r=>{
+    const b=document.createElement('button');
+    b.className='navbtn'; b.dataset.id=r.id;
+    b.innerHTML=`<div class="code">${esc(r.no)}</div><div class="n">${esc(r.label)}</div>
+      <div class="d">${esc(NAV_DESC[r.id]||r.desc||'')}</div>`;
+    b.onclick=()=>select(r.id);
+    n.appendChild(b);
+  });
+}
+
+function select(id){
+  current=id;
+  rec=data.records.find(r=>r.id===id);          // reference — edits persist in `data`
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
+  $('editName').textContent=rec.label;
+  $('editHint').textContent = id==='about'
+    ? 'This is your “About Me”. Change your bio, or add/edit a job in your experience list.'
+    : 'Edit the text, taglines, and the list of projects for this section.';
+  buildForm(); renderPreview();
+}
+
+function field(label,help,value,onInput,textarea){
+  const w=document.createElement('div'); w.className='field';
+  const tag=textarea?'textarea':'input';
+  w.innerHTML=`<label>${label}</label>${help?`<div class="help">${help}</div>`:''}
+    <${tag} ${textarea?'rows="3"':''}></${tag}>`;
+  const el=w.querySelector(textarea?'textarea':'input');
+  el.value=esc(value);
+  el.addEventListener('input',()=>{ onInput(el.value); renderPreview(); });
+  return w;
+}
+
+function buildForm(){
+  const f=$('form'); f.innerHTML='';
+  f.appendChild(field('Section title','The big heading on this section.',rec.title,v=>rec.title=v));
+  f.appendChild(field('Tagline','One short line under the title.',rec.tagline,v=>rec.tagline=v));
+  f.appendChild(field('Short description','The one-liner shown in the home list.',rec.desc,v=>rec.desc=v));
+
+  const introTtl=document.createElement('div'); introTtl.className='secttl mono';
+  introTtl.textContent = current==='about' ? 'Your bio (paragraphs)' : 'Intro paragraphs';
+  f.appendChild(introTtl);
+  rec.intro=rec.intro||[];
+  rec.intro.forEach((p,i)=>{
+    const g=document.createElement('div'); g.className='group';
+    g.innerHTML=`<div class="gtag mono">Paragraph ${i+1}</div><button class="rm" title="Remove">×</button>`;
+    g.querySelector('.rm').onclick=()=>{rec.intro.splice(i,1);buildForm();renderPreview();};
+    g.appendChild(field('','',p,v=>rec.intro[i]=v,true));
+    f.appendChild(g);
+  });
+  f.appendChild(addBtn('+ Add a paragraph',()=>{rec.intro.push('New paragraph…');buildForm();renderPreview();}));
+
+  const itemsTtl=document.createElement('div'); itemsTtl.className='secttl mono';
+  itemsTtl.textContent = current==='about' ? 'Your experience (jobs)' : 'Projects / tracklist';
+  f.appendChild(itemsTtl);
+  rec.items=rec.items||[];
+  rec.items.forEach((it,i)=>{
+    const g=document.createElement('div'); g.className='group';
+    g.innerHTML=`<div class="gtag mono">${current==='about'?'Job':'Project'} ${i+1}</div><button class="rm" title="Remove">×</button>`;
+    g.querySelector('.rm').onclick=()=>{rec.items.splice(i,1);buildForm();renderPreview();};
+    g.appendChild(field(current==='about'?'Role / title':'Title','',it.title,v=>rec.items[i].title=v));
+    g.appendChild(field(current==='about'?'Company / detail':'Subtitle','',it.meta,v=>rec.items[i].meta=v));
+    const row=document.createElement('div'); row.className='row2';
+    row.appendChild(field('Year','',it.year,v=>rec.items[i].year=v));
+    row.appendChild(field(current==='about'?'Dates':'Duration','',it.dur,v=>rec.items[i].dur=v));
+    g.appendChild(row);
+    if(current!=='about'){
+      g.appendChild(field('Description','A sentence or two about this project. (Optional)',it.body,v=>rec.items[i].body=v,true));
+      g.appendChild(uploadField('Photo — JPG / PNG','A picture of the work. (Optional)','image/png,image/jpeg',it,'image'));
+      g.appendChild(uploadField('Short video — MP4 (~30s)','Keep it short. MP4 plays everywhere; for longer videos paste a link below instead. (Optional)','video/mp4',it,'video'));
+      g.appendChild(uploadField('PDF — deck, writing sample, résumé…','A file people can open or download. (Optional)','application/pdf',it,'pdf'));
+      const lr=document.createElement('div'); lr.className='row2';
+      lr.appendChild(field('Link','Paste a link — published work, YouTube, etc. (Optional)',it.link,v=>rec.items[i].link=v));
+      lr.appendChild(field('Link text','What the button says, e.g. “Watch it”.',it.linkLabel,v=>rec.items[i].linkLabel=v));
+      g.appendChild(lr);
+    }
+    f.appendChild(g);
+  });
+  f.appendChild(addBtn(current==='about'?'+ Add a job':'+ Add a project',
+    ()=>{rec.items.push({title:'New '+(current==='about'?'role':'project'),meta:'',year:'',dur:''});buildForm();renderPreview();}));
+
+  const cTtl=document.createElement('div'); cTtl.className='secttl mono'; cTtl.textContent='Credits';
+  f.appendChild(cTtl);
+  rec.credits=rec.credits||[];
+  rec.credits.forEach((c,i)=>{
+    const g=document.createElement('div'); g.className='group';
+    g.innerHTML=`<div class="gtag mono">Credit ${i+1}</div><button class="rm" title="Remove">×</button>`;
+    g.querySelector('.rm').onclick=()=>{rec.credits.splice(i,1);buildForm();renderPreview();};
+    const row=document.createElement('div'); row.className='row2';
+    row.appendChild(field('Label','',c.k,v=>rec.credits[i].k=v));
+    row.appendChild(field('Value','',c.v,v=>rec.credits[i].v=v));
+    g.appendChild(row);
+    f.appendChild(g);
+  });
+  f.appendChild(addBtn('+ Add a credit',()=>{rec.credits.push({k:'Label',v:'Value'});buildForm();renderPreview();}));
+}
+
+function addBtn(text,fn){ const b=document.createElement('button'); b.className='addbtn'; b.textContent=text; b.onclick=fn; return b; }
+
+// Choose-a-file control. Keeps the real File on the item (in a __file_ key that is
+// stripped before saving); the actual upload to GitHub happens on Publish.
+function uploadField(label,help,accept,item,key){
+  const w=document.createElement('div'); w.className='field';
+  w.innerHTML=`<label>${label}</label>${help?`<div class="help">${help}</div>`:''}
+    <input type="file" accept="${accept}"><div class="filepreview"></div>`;
+  const inp=w.querySelector('input'), pv=w.querySelector('.filepreview');
+  function draw(){
+    const nm = item['__file_'+key] ? item['__file_'+key].name : (item[key] ? item[key].split('/').pop() : '');
+    if(nm){
+      pv.innerHTML=`<span class="fchip">📎 ${esc(nm)} <button class="fx" title="Remove">×</button></span>`;
+      pv.querySelector('.fx').onclick=()=>{
+        if(item[key] && item['__preview_'+key]) URL.revokeObjectURL(item[key]);
+        delete item[key]; delete item['__file_'+key]; delete item['__preview_'+key];
+        inp.value=''; draw(); renderPreview();
+      };
+    } else pv.innerHTML='';
+  }
+  inp.addEventListener('change',()=>{
+    const file=inp.files[0]; if(!file) return;
+    item['__file_'+key]=file;
+    item[key]=URL.createObjectURL(file);      // preview only; replaced with repo path on Publish
+    item['__preview_'+key]=true;
+    draw(); renderPreview();
+  });
+  draw();
+  return w;
+}
+
+function renderPreview(){
+  const p=$('preview');
+  const intro=(rec.intro||[]).map(x=>`<p>${esc(x)}</p>`).join('');
+  let itemsHtml;
+  if(current==='about'){
+    itemsHtml=(rec.items||[]).map(it=>`<div class="trk">
+      <div><div class="t">${esc(it.title)}</div><div class="m">${esc(it.meta)}</div></div>
+      <div class="y">${esc(it.year||it.dur)}</div></div>`).join('');
+  } else {
+    itemsHtml=(rec.items||[]).map(it=>{
+      let media='';
+      if(it.image) media+=`<img class="pimg" src="${esc(it.image)}" alt="">`;
+      if(it.video) media+=`<video src="${esc(it.video)}" controls preload="metadata"></video>`;
+      const btns=[];
+      if(it.pdf)  btns.push(`<a class="mbtn pdf" href="${esc(it.pdf)}" target="_blank">📄 ${esc(it.pdfLabel||'View PDF')}</a>`);
+      if(it.link) btns.push(`<a class="mbtn" href="${esc(it.link)}" target="_blank">🔗 ${esc(it.linkLabel||'Open link')}</a>`);
+      const btnsHtml=btns.length?`<div class="btns">${btns.join('')}</div>`:'';
+      return `<div class="pcard">
+        <div class="pt">${esc(it.title)}</div>
+        <div class="pm">${esc(it.meta)}${it.year?' · '+esc(it.year):''}</div>
+        ${it.body?`<div class="pb">${esc(it.body)}</div>`:''}
+        ${media}${btnsHtml}</div>`;
+    }).join('');
+  }
+  const creds=(rec.credits||[]).map(c=>`<div><div class="k">${esc(c.k)}</div><div class="v">${esc(c.v)}</div></div>`).join('');
+  p.innerHTML=`
+    <div class="side-lbl mono">${esc(rec.side||'')} · ${esc(rec.cat||'')}</div>
+    <h3 class="p-title serif">${esc(rec.title)}</h3>
+    <p class="p-tag">${esc(rec.tagline)}</p>
+    <div class="p-intro">${intro}</div>
+    <div class="p-list-lbl mono">${esc(rec.listLabel||'Tracklist')}</div>
+    ${itemsHtml}
+    <div class="creds">${creds}</div>`;
+}
+
+/* ===================== SAVE (upload files + commit content.json) ===================== */
+function toast(msg,isErr){
+  const t=$('toast'); t.textContent=msg; t.className='toast show'+(isErr?' err':'');
+  setTimeout(()=>t.className='toast',isErr?5200:3400);
+}
+function fileToB64(file){
+  return new Promise((res,rej)=>{ const r=new FileReader();
+    r.onload=()=>res(String(r.result).split(',')[1]); r.onerror=rej; r.readAsDataURL(file); });
+}
+function utf8ToB64(str){ return btoa(unescape(encodeURIComponent(str))); }
+function ghUrl(path){ return API+'/repos/'+REPO+'/contents/'+path.split('/').map(encodeURIComponent).join('/'); }
+
+async function ghGetSha(path){
+  const r=await fetch(ghUrl(path)+'?ref='+BRANCH,{headers:{Authorization:'token '+token,Accept:'application/vnd.github+json'}});
+  if(r.status===404) return null;
+  if(!r.ok) throw new Error('Could not read '+path+' ('+r.status+')');
+  return (await r.json()).sha;
+}
+async function ghPut(path,b64,message,sha){
+  const body={message,content:b64,branch:BRANCH}; if(sha) body.sha=sha;
+  const r=await fetch(ghUrl(path),{method:'PUT',
+    headers:{Authorization:'token '+token,Accept:'application/vnd.github+json','Content-Type':'application/json'},
+    body:JSON.stringify(body)});
+  if(!r.ok) throw new Error('Save failed for '+path+' ('+r.status+'): '+(await r.text()).slice(0,140));
+  return r.json();
+}
+
+$('saveBtn').onclick = async ()=>{
+  const btn=$('saveBtn'); if(btn.disabled) return;
+  btn.disabled=true; const orig=btn.textContent; btn.textContent='Publishing…';
+  try{
+    // 1) upload any newly chosen files, swap their fields to the committed repo path
+    const pend=[];
+    data.records.forEach(r=>(r.items||[]).forEach(it=>['image','video','pdf'].forEach(key=>{
+      if(it['__file_'+key]) pend.push({it,key,file:it['__file_'+key]});
+    })));
+    for(const p of pend){
+      const safe=p.file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+      const path='images/uploads/'+Date.now()+'-'+Math.random().toString(36).slice(2,7)+'-'+safe;
+      btn.textContent='Uploading '+safe+'…';
+      await ghPut(path, await fileToB64(p.file), 'Upload '+safe+' via editor');
+      if(p.it[p.key] && p.it['__preview_'+p.key]) URL.revokeObjectURL(p.it[p.key]);
+      p.it[p.key]=path; delete p.it['__file_'+p.key]; delete p.it['__preview_'+p.key];
+    }
+    // 2) commit content.json (strip internal __ keys)
+    btn.textContent='Saving text…';
+    const json=JSON.stringify(data,(k,v)=>k.indexOf('__')===0?undefined:v,2);
+    if(json.indexOf('blob:')!==-1) throw new Error('A file did not finish uploading. Please try again.');
+    const sha=await ghGetSha('content.json');
+    await ghPut('content.json', utf8ToB64(json), 'Update site content via editor', sha);
+
+    toast('✓ Published! Your website updates in about a minute.');
+    buildForm(); renderPreview();
+  }catch(err){
+    toast('⚠ '+err.message, true);
+  }finally{
+    btn.disabled=false; btn.textContent=orig;
+  }
+};
+</script>
 </body>
 </html>
