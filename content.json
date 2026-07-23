@@ -295,43 +295,36 @@
       "no": "A4",
       "cat": "ML-004",
       "label": "Sound Design",
-      "desc": "Instrumental snippets",
-      "title": "Sound Design",
+      "desc": "Brand Ideas",
+      "title": "Ad Concepts",
       "genre": "Audio / Instrumentals",
       "side": "SIDE B",
-      "listLabel": "SNIPPETS",
-      "tagline": "Instrumental sketches I made in Logic Pro X.",
+      "listLabel": "PROJECTS",
+      "tagline": "Brand strategies and ideas that I believe can strengthen brand perception, drive customer acquisition and sales growth, and help solve current business challenges.",
       "image": "images/soundnew.png",
       "intro": [
-        "Here are a few instrumental snippets I created in Logic Pro X, exploring different genres and moods.",
+        "",
         "Each track can be played directly here as the final audio files are added."
       ],
       "credits": [
         {
-          "k": "Sound Design",
+          "k": "Ad Concepts",
           "v": "Mariam Lokhat"
         },
         {
-          "k": "DAW",
-          "v": "Logic Pro X"
-        },
-        {
-          "k": "Hardware",
-          "v": "AKAI MPK Mini MIDI Keyboard"
-        },
-        {
-          "k": "Needed",
-          "v": "Audio files or share links"
+          "k": "Brand Strategies",
+          "v": "ChatGPT for Image creation - Ideas, copywriting and direction was (me)  Mariam Lokhat"
         }
       ],
       "items": [
         {
-          "title": "Stranger Things Inspired",
-          "meta": "Original instrumental created in Logic Pro X",
-          "year": "2024",
-          "dur": "1:10",
+          "title": "The Louisiana Bowl",
+          "meta": "This menu concept could help Popeyes capitalize on the bowl trend, increase menu relevance, and drive incremental sales by incorporating its signature flavours and well known menu items into a new format.",
+          "year": "2026",
+          "dur": "",
           "tag": "[ INSTRUMENTAL ]",
-          "body": "A synth-led instrumental inspired by atmospheric television scores."
+          "body": "A chicken nugget rice bowl with Popeye's known flavours! ",
+          "image": "images/uploads/1784827308510-vmr14-1af5a1af-3206-40e4-8338-b6659650a47f.png"
         },
         {
           "title": "Cottage Night",
