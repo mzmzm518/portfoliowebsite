@@ -313,7 +313,11 @@ function buildForm(){
   const f=$('form'); f.innerHTML='';
 
   // core
-  f.appendChild(field('Section title','The big heading on this section.',rec.title,v=>rec.title=v));
+  f.appendChild(field('Record name','The name on the record on your home screen (and the heading inside it).',rec.label,v=>{
+    rec.label=v; rec.title=v;                       // keep the two names in sync
+    $('editName').textContent=v;                    // update the editor heading live
+    const nb=document.querySelector('.navbtn[data-id="'+current+'"] .n'); if(nb)nb.textContent=v; // update the left nav
+  }));
   f.appendChild(field('Tagline','One short line under the title.',rec.tagline,v=>rec.tagline=v));
   f.appendChild(field('Short description','The one-liner shown in the home list.',rec.desc,v=>rec.desc=v));
   if('listLabel' in rec) f.appendChild(field('List heading','e.g. PROJECTS, EXPERIENCE, SNIPPETS.',rec.listLabel,v=>rec.listLabel=v));
