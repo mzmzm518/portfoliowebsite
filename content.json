@@ -203,7 +203,7 @@
       "side": "SIDE B",
       "listLabel": "VISUAL PROJECTS",
       "tagline": "Photography, mockups, and visual concept exploration.",
-      "image": "images/concepts.png",
+      "image": "images/uploads/1787510549445-kdjm9-c1c09fa7-b516-498d-b9c8-86f1e823eb46.webp",
       "intro": [
         "I use photography and graphic design as ways to explore visual storytelling, composition, and campaign ideas.",
         "My photography includes portraits, landscapes, architecture, city views, and detail studies. My graphic design work includes mockups and campaign-style concepts for brands such as Converse, Subway, Beyond Mac, and Hubbell."
@@ -245,12 +245,12 @@
             },
             {
               "image": "images/visual-work/photography-mountain-wildlife.jpg",
-              "title": "Mountain Wildlife",
-              "caption": "A wildlife moment framed by the lake and surrounding mountains."
+              "title": "Wildlife in Banff CA",
+              "caption": "Mountain goats in Banff."
             },
             {
               "image": "images/visual-work/photography-mountain-lake.jpg",
-              "title": "Mountain Lake",
+              "title": "Mountains in Jasper CA",
               "caption": "Landscape photography capturing scale, light, and stillness."
             }
           ]
@@ -258,22 +258,22 @@
         {
           "title": "Graphic Design",
           "subtitle": "Brand mockups and creative advertising concepts",
-          "body": "These are a few mockups I created to explore creative concepts in graphic design. The collection includes advertising and campaign-style work across fashion, food, and technology brands, edited with Photoshop, Lightroom, and Canva.",
+          "body": "These are a few mockups I created to explore creative concepts in graphic design. The collection includes advertising and campaign-style work across fashion, food, and technology brands, edited with Photoshop, and Canva.",
           "gallery": [
             {
               "image": "images/visual-work/design-converse.png",
               "title": "Converse Promotion",
-              "caption": "A retail promotion concept built around bold type and a clean product focus."
+              "caption": "A retail promotion concept built around bold type and product focus."
             },
             {
               "image": "images/visual-work/design-beyond-mac.png",
               "title": "Beyond Mac",
-              "caption": "A colourful plant-based burger launch concept."
+              "caption": "A colourful Beyond Meat burger and Mcdonald's collab."
             },
             {
               "image": "images/visual-work/design-hubbell-yellow.png",
               "title": "Hubbell Edge Connect",
-              "caption": "A long-form product advertisement using Hubbell's yellow-and-black visual language."
+              "caption": "An informative product advertisement featuring Hubbell’s signature yellow and black colour palette."
             },
             {
               "image": "images/visual-work/design-hubbell-black.png",
@@ -281,29 +281,19 @@
               "caption": "An alternate Edge Connect layout focused on product features and performance."
             },
             {
+              "image": "images/visual-work/design-eos-campaign.png",
+              "title": "EOS Mochi Campaign ",
+              "caption": "A campaign layout combining product benefits with flavour led art direction. Art direction, concept, and copy created by me; the image was generated using ChatGPT.\n"
+            },
+            {
               "image": "images/visual-work/design-celebrity-cruises.png",
               "title": "Celebrity Cruises",
-              "caption": "A travel advertisement concept centred on ease, service, and escape."
-            },
-            {
-              "image": "images/visual-work/design-eos-product.png",
-              "title": "EOS Product Visual",
-              "caption": "A bright product-led composition inspired by fruit and mochi flavours."
-            },
-            {
-              "image": "images/visual-work/design-eos-campaign.png",
-              "title": "EOS Mochi Campaign",
-              "caption": "A campaign layout combining product benefits with flavour-led art direction."
-            },
-            {
-              "image": "images/visual-work/design-cineplex.png",
-              "title": "Cineplex Protein Popcorn",
-              "caption": "A high-impact cinema snack advertisement concept."
+              "caption": "A travel advertisement concept centred on ease, service, and escape. Art direction, concept, and copy created by me; the image was generated using ChatGPT."
             },
             {
               "image": "images/visual-work/design-febreze-crumbl.png",
               "title": "Febreze × Crumbl",
-              "caption": "A playful collaboration concept connecting home fragrance with bakery-inspired scents."
+              "caption": "A playful collaboration concept connecting home fragrance with bakery inspired scents. Art direction, concept, and copy created by me; the image was generated using ChatGPT."
             }
           ]
         }
