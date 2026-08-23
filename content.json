@@ -426,8 +426,24 @@
       "liveEvents": {
         "title": "Hosting Live Events",
         "subtitle": "OLG live draws, production, and on-camera hosting",
-        "body": "During my time at OLG, I hosted live events including The Big Spin, Bigger Spin, and Plinko. I also supported live lottery draws, filmed and edited content in Adobe Premiere Pro, and prepared final videos for publication.",
-        "gallery": []
+        "body": "During my time at OLG, I hosted live events including The Big Spin, Bigger Spin, and Plinko. I also supported live lottery draws, filmed and edited content in Adobe Premiere Pro, and prepared final videos for OLG.ca.",
+        "gallery": [
+          {
+            "image": "images/uploads/1787512766966-3kx42-7e8b3534-c2f0-4da9-a791-22d95c415bf9.webp",
+            "title": "Bigger Spin Event",
+            "caption": "As the draw coordinator and host, my role was to set up the lighting for the winners, ensure all machines were functioning properly and adequately prepared for the event, audit the winning amounts, and announce the results.\n"
+          },
+          {
+            "image": "images/uploads/1787512767895-3qabj-5920adf5-242e-4b07-a076-59d58e3f0fe3.jpg",
+            "title": "Video Editing ",
+            "caption": "Using Adobe Premiere Pro, after facilitating the draws, I would edit and organize the footage, then upload them to OLG.ca for audiences to view the ball drops.\n"
+          },
+          {
+            "image": "images/uploads/1787512768816-5aoir-30ac84ca-304d-4fb4-b81f-5a7e697281dc.webp",
+            "title": "The Draws Studio",
+            "caption": "Until April 2025, Ontario was the only province still conducting physical ball draws before transitioning to a Random Number Generator (RNG) system, like other provinces. As part of my role, I would load the balls into the machines, record the draws, document the winning numbers alongside multiple auditors, and prepare press releases for Cision Newswire announcing the results.\n"
+          }
+        ]
       }
     }
   ]
