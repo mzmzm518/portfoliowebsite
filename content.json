@@ -170,6 +170,25 @@
               "caption": "Conversion-focused search copy highlighting a simple remodeling experience."
             }
           ]
+        },
+        {
+          "title": "My Take on this Degree Ad",
+          "meta": "I saw this degree ad on the NYC subway and immediately thought it could be better.",
+          "year": "2026",
+          "dur": "",
+          "body": "Walking down the stairs in the NYC subway, I saw a Degree deodorant ad that read, “Unnaturally hot days call for more than natural deodorant.” I felt this wording could unintentionally suggest that Degree deodorant is less natural or less healthy because it’s positioned as something you need when natural deodorant isn’t enough.\n\nInstead, I wanted to flip the message and focus on the confidence and freshness Degree provides, especially on hot days. Since the original ad was placed in a subway, I also thought it would be more effective to make the concept feel specific to the environment and extend it across subway systems in North America.",
+          "gallery": [
+            {
+              "image": "images/uploads/1787509551095-jlrbi-7716aa1c-a2ef-4f52-b3f2-efd333f2c1cc.webp",
+              "title": "Original Ad Copy",
+              "caption": ""
+            },
+            {
+              "image": "images/uploads/1787509552247-m4vsc-9adb082b-ad56-498c-b090-04314c3b9c33.webp",
+              "title": "My Revision",
+              "caption": "I used ChatGPT to add the text and fonts onto the subway image, but the concepts and ad copy were my own ideas."
+            }
+          ]
         }
       ]
     },
