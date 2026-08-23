@@ -366,13 +366,13 @@
       "id": "film",
       "no": "A5",
       "cat": "ML-005",
-      "label": "Film",
+      "label": "Film & Sound",
       "desc": "Writing & directing",
-      "title": "Film",
+      "title": "Film & Sound",
       "genre": "Motion / Storytelling",
       "side": "SIDE B",
       "listLabel": "PROJECTS",
-      "tagline": "Storytelling through writing, directing, filming, and editing.",
+      "tagline": "Some stories I created through writing, directing, filming, and editing.",
       "image": "images/film.png",
       "intro": [
         "This work reflects my genuine interest in storytelling through writing, editing, and directing.",
@@ -403,7 +403,7 @@
           "year": "2024",
           "dur": "3:30",
           "tag": "[ SHORT FILM ]",
-          "body": "Blue Crayon is a short film I wrote and directed, inspired by my own experiences.",
+          "body": "Blue Crayon is a short film that I wrote and directed, inspired by my own experiences growing up with a younger brother who has severe autism and an intellectual disability.\n\nFor a university project, I wanted to tell a story that reflected a side of having an autistic sibling that is often overlooked. Popular portrayals, such as *Young Sheldon* or *The Good Doctor*, can sometimes create the impression that autism is primarily associated with exceptional intelligence or unique abilities. My experience has been much more complicated.\n\nGrowing up with my brother also meant experiencing challenging moments, including emotional outbursts, difficult behaviours, and the ways these experiences can affect family relationships. It can sometimes feel as though the needs of the neurodivergent sibling take priority, leaving other siblings feeling overlooked or pushed aside. This experience is sometimes described as being a “glass child.”\n\nBlue Crayon is not about blaming anyone. I understand that these circumstances are often nobody’s fault, and that families are doing their best to navigate difficult situations. Instead, I wanted to create a relatable and honest story for people who may have experienced something similar, while giving others a perspective they may not have considered before.\n",
           "image": "images/film-projects/blue-crayon.jpg",
           "link": "https://www.youtube.com/watch?v=WzHj6_dl4qA",
           "linkLabel": "Watch Blue Crayon"
@@ -414,7 +414,7 @@
           "year": "2024",
           "dur": "1:20",
           "tag": "[ COMMERCIAL ]",
-          "body": "A commercial I co-directed, wrote, and acted in for a fictitious website created with my team.",
+          "body": "A commercial I co-directed, wrote, and acted in for a fictitious website created with my university classmates.",
           "image": "images/film-projects/linkd-commercial.jpg",
           "link": "https://www.youtube.com/watch?v=ZkJThfyJbT8",
           "linkLabel": "Watch Link’d"
@@ -425,7 +425,7 @@
           "year": "2024",
           "dur": "2:10",
           "tag": "[ DOCUMENTARY ]",
-          "body": "A short documentary excerpt that I directed, filmed, and conducted interviews for.",
+          "body": "A short documentary that I directed, filmed, and conducted interviews for growing up as a \"glass child\". ",
           "image": "images/film-projects/rough-documentary.jpg",
           "link": "https://www.youtube.com/watch?v=wcbFkL_CfiQ",
           "linkLabel": "Watch Rough Draft"
@@ -435,28 +435,7 @@
         "title": "Hosting Live Events",
         "subtitle": "OLG live draws, production, and on-camera hosting",
         "body": "During my time at OLG, I hosted live events including The Big Spin, Bigger Spin, and Plinko. I also supported live lottery draws, filmed and edited content in Adobe Premiere Pro, and prepared final videos for publication.",
-        "gallery": [
-          {
-            "image": "images/live-events/olg-prize-centre.jpg",
-            "title": "OLG Prize Centre",
-            "caption": "Live-draw production environment."
-          },
-          {
-            "image": "images/live-events/big-spin-winner.png",
-            "title": "The Big Spin",
-            "caption": "Winner moment from a live event."
-          },
-          {
-            "image": "images/live-events/bigger-spin-winner.jpg",
-            "title": "Bigger Spin",
-            "caption": "On-set live event production."
-          },
-          {
-            "image": "images/live-events/olg-studio.jpg",
-            "title": "OLG Studio",
-            "caption": "Lottery studio and broadcast setup."
-          }
-        ]
+        "gallery": []
       }
     }
   ]
