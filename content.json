@@ -384,9 +384,9 @@
       "id": "film",
       "no": "A5",
       "cat": "ML-005",
-      "label": "Film & Sound",
+      "label": "Film ",
       "desc": "Writing & directing",
-      "title": "Film & Sound",
+      "title": "Film ",
       "genre": "Motion / Storytelling",
       "side": "SIDE B",
       "listLabel": "PROJECTS",
@@ -398,20 +398,12 @@
       ],
       "credits": [
         {
-          "k": "Writing",
-          "v": "Mariam Lokhat"
-        },
-        {
-          "k": "Direction",
-          "v": "Mariam Lokhat"
-        },
-        {
           "k": "Editing",
           "v": "Adobe Premiere Pro"
         },
         {
           "k": "Cameras",
-          "v": "Sony A7 / Canon Rebel i8"
+          "v": "Sony A7 / Canon Rebel i8 / Black Magic Camera at OLG"
         }
       ],
       "items": [
