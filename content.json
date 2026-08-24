@@ -14,8 +14,7 @@
       "image": "images/about.png",
       "aboutPhotos": [
         "images/about-photos/mariam-headshot.png",
-        "images/about-photos/mariam-ocad-graduation.png",
-        "images/uploads/1784665252825-h16ld-Screenshot_2026-07-21_161957ptrofgleigir.png"
+        "images/about-photos/mariam-ocad-graduation.png"
       ],
       "intro": [
         "I’m a Toronto-based creative and Campaign Planning Specialist with experience across paid media, copywriting, film, hosting live events, photography, graphic design, and sound design. I have a genuine interest in solving business problems and helping brands grow through creative, thoughtful, and unique ideas.",
@@ -44,7 +43,7 @@
           "title": "Campaign Planning Specialist",
           "meta": "Trooh - campaign planning and media execution",
           "year": "2026",
-          "dur": "Jun 2026 - Present",
+          "dur": "May 2026 - Present",
           "points": [
             "Plan and execute media campaigns at Trooh",
             "Coordinate campaign timelines, delivery, and reporting",
@@ -55,7 +54,7 @@
           "title": "Paid Media Associate",
           "meta": "GALE - paid search and paid social campaign work",
           "year": "2025",
-          "dur": "Jun 2025 - Jun 2026",
+          "dur": "May 2025 - May 2026",
           "points": [
             "Managed paid search and paid social campaigns at GALE",
             "Wrote and optimized ad copy across client accounts",
@@ -66,21 +65,11 @@
           "title": "Draws Marketing Coordinator",
           "meta": "OLG - live draw hosting, filming, editing, and publishing",
           "year": "2022",
-          "dur": "Jun 2022 - May 2025",
+          "dur": "Jun 2022 - April 2025",
           "points": [
             "Hosted live lottery draws on camera",
             "Filmed, edited, and published draw and event content",
             "Supported live event production and scheduling"
-          ]
-        },
-        {
-          "title": "Photographer & Videographer",
-          "meta": "Manifesto Community Projects",
-          "year": "2023",
-          "dur": "Mar 2023 - May 2023",
-          "points": [
-            "Photographed and filmed community events",
-            "Captured and edited photo and video content"
           ]
         }
       ],
@@ -88,7 +77,7 @@
         {
           "school": "OCAD University",
           "degree": "Bachelor of Design, Advertising",
-          "yr": "2020 - 2023",
+          "yr": "",
           "note": "Honours"
         }
       ],
@@ -99,8 +88,18 @@
           "yr": "2025"
         },
         {
-          "name": "Amazon DSP Campaigns",
-          "org": "Amazon",
+          "name": "The Trade Desk: Marketing Essentials ",
+          "org": "The Trade Desk",
+          "yr": "2025"
+        },
+        {
+          "name": "Media Studies - Entertainment and Broadcast Media ",
+          "org": "Asean Online Education ",
+          "yr": "2023"
+        },
+        {
+          "name": "Google Ads Video Certification",
+          "org": "Google",
           "yr": "2025"
         }
       ],
