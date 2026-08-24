@@ -123,20 +123,8 @@
       ],
       "credits": [
         {
-          "k": "Client Work",
-          "v": "Enercare / BathFitter"
-        },
-        {
-          "k": "Role",
-          "v": "Paid Media Associate"
-        },
-        {
-          "k": "Agency",
-          "v": "GALE Partners"
-        },
-        {
-          "k": "Platform",
-          "v": "Google Ads"
+          "k": "The images were generated using ChatGPT to achieve a realistic look.",
+          "v": "I created the ad copy and developed the art direction for the ads."
         }
       ],
       "items": [
@@ -171,7 +159,7 @@
           ]
         },
         {
-          "title": "My Take on this Degree Ad",
+          "title": "Degree Deodorant: My Take On This Ad",
           "meta": "I saw this degree ad on the NYC subway and immediately thought it could be better.",
           "year": "2026",
           "dur": "",
@@ -186,6 +174,30 @@
               "image": "images/uploads/1787509552247-m4vsc-9adb082b-ad56-498c-b090-04314c3b9c33.webp",
               "title": "My Revision",
               "caption": "I used ChatGPT to add the text and fonts onto the subway image, but the concepts and ad copy were my own ideas."
+            }
+          ]
+        },
+        {
+          "title": "Clutch: Car Shopping Convenience - My Take On This Ad",
+          "meta": "I wanted to showcase how easy Clutch is for the user.",
+          "year": "2026",
+          "dur": "",
+          "body": "Clutch is an online platform that makes buying a used car simple and convenient. Each vehicle is certified and can be purchased entirely online, eliminating the need to visit multiple dealerships. For my take on the original ad, I wanted to emphasize this convenience and speak to consumers with busy lives who may not have the time to travel between dealerships comparing different vehicles. I created two ad concepts with different copy approaches, both highlighting how Clutch takes care of the time consuming parts of car shopping so customers can focus on what matters most to them: finding the right vehicle and getting the best value.\n ",
+          "gallery": [
+            {
+              "image": "images/uploads/1787543712539-u9r42-57edf46b-2099-470e-a4e4-7845eb5656ce.webp",
+              "title": "Original Ad ",
+              "caption": ""
+            },
+            {
+              "image": "images/uploads/1787543713428-olcrr-c9348c4c-98a2-41be-aac2-632d236e7896.webp",
+              "title": "My Revised Ad #1",
+              "caption": "I wanted to showcase how easily you can find and purchase a car directly from your phone, while having the confidence that Clutch has taken care of any necessary repairs and completed a safety inspection. This allows customers to have a car delivered right to their doorstep without ever having to leave home.\n"
+            },
+            {
+              "image": "images/uploads/1787543714196-f304e-8306b3c8-5800-4ea6-83a0-c39f03432ffb.webp",
+              "title": "My Revised Ad #2",
+              "caption": "I wanted to showcase that the only thing customers need to worry about is the car’s features, design, and what will add value to their lives. They don’t have to worry about inspecting the car in person, dealing with potential damage, or navigating the hassle of car shopping and different salespeople at a dealership. Instead, they can focus on the exciting parts of choosing a car and leave the rest to Clutch.\n"
             }
           ]
         }
