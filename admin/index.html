@@ -61,6 +61,13 @@
     line-height:1;font-size:9px;color:var(--ink-soft);cursor:pointer;padding:0;transition:.15s;}
   .navarrow:hover:not(:disabled){background:#eae6dd;color:var(--ink);}
   .navarrow:disabled{opacity:.3;cursor:default;}
+  .swatches{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:3px;}
+  .swatch{width:27px;height:27px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0;}
+  .swatch.on{box-shadow:0 0 0 2px var(--ink);}
+  .swatch.custom{display:inline-flex;align-items:center;justify-content:center;overflow:hidden;
+    background:conic-gradient(red,orange,yellow,lime,cyan,blue,magenta,red);}
+  .swatch.custom input{opacity:0;width:100%;height:100%;cursor:pointer;border:none;padding:0;}
+  .linklike{background:none;border:none;color:var(--gold);font-size:11px;cursor:pointer;padding:5px 0 0;text-decoration:underline;}
 
   .edit{padding:24px 26px;overflow-y:auto;}
   .edit .panelttl{font-size:11px;color:var(--gold);margin-bottom:2px;}
@@ -323,6 +330,32 @@ function galleryEditor(gallery,addLabel){
   box.appendChild(addBtn(addLabel||'+ Add an image',()=>{ gallery.push({image:'',title:'',caption:''}); redraw(); }));
   return box;
 }
+// Curated colours that match the vinyl aesthetic (+ a custom picker).
+const ACCENT_PRESETS=[['Gold','#9c7b22'],['Olive','#6f7539'],['Burgundy','#7c3a3f'],['Muted blue','#445f73'],['Burnt orange','#b5652a']];
+const PAPER_PRESETS=[['Cream','#f4ead4'],['Warm sand','#efe4cc'],['Pale olive','#ede6d4'],['Blush','#f3e8e2'],['Cool grey','#e9ece7']];
+// A colour chooser: preset swatches + custom picker + reset-to-default.
+function colorField(label,help,presets,dflt,get,set){
+  const w=el('div','field');
+  w.innerHTML=`<label>${label}</label>${help?`<div class="help">${help}</div>`:''}`;
+  const cur=String(get()||dflt).toLowerCase();
+  const row=el('div','swatches');
+  presets.forEach(([name,hex])=>{
+    const s=el('button','swatch'); s.type='button'; s.title=name; s.style.background=hex;
+    if(hex.toLowerCase()===cur) s.classList.add('on');
+    s.onclick=()=>{ set(hex); redraw(); };
+    row.appendChild(s);
+  });
+  const custom=el('label','swatch custom'); custom.title='Custom colour';
+  const inp=el('input'); inp.type='color'; inp.value=/^#[0-9a-f]{6}$/i.test(cur)?cur:dflt;
+  inp.oninput=()=>{ set(inp.value); applyPreviewColors(); };   // smooth while dragging
+  inp.onchange=()=>{ set(inp.value); redraw(); };              // settle + mark swatch
+  custom.appendChild(inp); row.appendChild(custom);
+  w.appendChild(row);
+  const reset=el('button','linklike'); reset.type='button'; reset.textContent='Reset to default';
+  reset.onclick=()=>{ set(null); redraw(); };
+  w.appendChild(reset);
+  return w;
+}
 // A titled section with its own gallery (Visual Work sections, Live Events)
 function sectionFields(sec){
   const box=el('div');
@@ -348,6 +381,13 @@ function buildForm(){
   f.appendChild(field('Short description','The one-liner shown in the home list.',rec.desc,v=>rec.desc=v));
   if('listLabel' in rec) f.appendChild(field('List heading','e.g. PROJECTS, EXPERIENCE, SNIPPETS.',rec.listLabel,v=>rec.listLabel=v));
   f.appendChild(mediaField('Record cover image','The square image for this section on the home screen.','image/png,image/jpeg',rec,'image',true));
+
+  // colour & look (per section)
+  f.appendChild(secTitle('Colour & look'));
+  f.appendChild(colorField('Page accent colour','Colours the small labels, the underline and the link buttons on this section. Everything else stays the same.',
+    ACCENT_PRESETS,'#7c5f16',()=>rec.accent,v=>{ if(v==null)delete rec.accent; else rec.accent=v; }));
+  f.appendChild(colorField('Page background tint','The paper colour behind this section’s content. Keep it light so the writing stays easy to read.',
+    PAPER_PRESETS,'#f4ead4',()=>rec.paper,v=>{ if(v==null)delete rec.paper; else rec.paper=v; }));
 
   // intro paragraphs
   f.appendChild(secTitle(current==='about'?'Your bio (paragraphs)':'Intro paragraphs'));
@@ -509,6 +549,14 @@ function renderPreview(){
     ${edu?`<div class="p-list-lbl mono">Education</div>${edu}`:''}
     ${certs?`<div class="p-list-lbl mono">Certifications</div>${certs}`:''}
     <div class="creds">${creds}</div>`;
+  applyPreviewColors();
+}
+// Tint the live preview with the section's chosen colours (mirrors the real site).
+function applyPreviewColors(){
+  const p=$('preview'); if(!p||!rec)return;
+  const acc=rec.accent||'#7c5f16', pap=rec.paper||'#f4ead4';
+  p.style.background=pap;
+  p.querySelectorAll('.p-tag,.p-list-lbl').forEach(x=>x.style.color=acc);
 }
 
 /* ===================== SAVE ===================== */

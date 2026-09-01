@@ -99,7 +99,7 @@
 
   <!-- ============ ALBUM PAGE ============ -->
   <sc-if value="{{ inSection }}" hint-placeholder-val="{{ false }}">
-  <div style="position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;background:#f4ead4;animation:albumin .5s ease both;">
+  <div style="position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;background:{{ activePaper }};animation:albumin .5s ease both;">
 
     <div style="flex:1;display:flex;align-items:stretch;flex-wrap:wrap;">
 
@@ -155,7 +155,7 @@
       </aside>
 
       <!-- ======= RIGHT: MAIN ======= -->
-      <main style="flex:1;min-width:320px;padding:30px 46px 34px;position:relative;background:#f4ead4;">
+      <main style="flex:1;min-width:320px;padding:30px 46px 34px;position:relative;background:{{ activePaper }};">
         <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 80% 0%,rgba(255,250,238,.6),rgba(255,250,238,0) 55%);"></div>
 
         <!-- top row -->
@@ -168,8 +168,8 @@
         <div style="position:relative;display:flex;gap:30px;align-items:flex-start;margin-top:18px;flex-wrap:wrap;">
           <div style="flex:1 1 380px;min-width:300px;">
             <h1 style="font-family:'Libre Caslon Display',serif;font-size:clamp(48px,6vw,82px);line-height:.92;margin:0;color:#241b12;letter-spacing:1px;">{{ activeTitleUpper }}</h1>
-            <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:2px;color:#7c6645;margin-top:18px;text-transform:uppercase;">{{ activeTagline }}</div>
-            <div style="width:74px;height:1px;background:rgba(42,33,26,.28);margin-top:18px;"></div>
+            <div style="font-family:'Space Mono',monospace;font-size:13px;letter-spacing:2px;color:{{ activeAccent }};margin-top:18px;text-transform:uppercase;">{{ activeTagline }}</div>
+            <div style="width:74px;height:1px;background:{{ activeAccent }};margin-top:18px;"></div>
             <div style="margin-top:20px;max-width:520px;">
               <sc-for list="{{ intro }}" as="p" hint-placeholder-count="2">
                 <p style="font-size:15.5px;line-height:1.72;color:#52432f;margin:0 0 14px;">{{ p }}</p>
@@ -235,7 +235,7 @@
               <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#71583c;flex:0 0 20px;">{{ it.n }}</span>
               <div style="flex:1;min-width:120px;">
                 <sc-if value="{{ isCopywriting }}" hint-placeholder-val="{{ false }}">
-                <div style="font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1.8px;color:#795d17;margin-bottom:4px;">PROJECT {{ it.n }}</div>
+                <div style="font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1.8px;color:{{ activeAccent }};margin-bottom:4px;">PROJECT {{ it.n }}</div>
                 </sc-if>
                 <div style="font-family:'Libre Caslon Display',serif;font-size:21px;line-height:1.1;color:#21170e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ it.title }}</div>
                 <div style="font-size:12.5px;font-weight:600;color:#5f4e3a;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ it.meta }}</div>
@@ -307,7 +307,7 @@
                 <a href="{{ it.pdf }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#241b12;color:#f4ecd7;text-decoration:none;border-radius:30px;padding:9px 17px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;transition:background .2s ease;" style-hover="background:#3a2c1c;">&#128196; {{ it.pdfText }}</a>
                 </sc-if>
                 <sc-if value="{{ it.hasLink }}" hint-placeholder-val="{{ false }}">
-                <a href="{{ it.link }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#7c5f16;text-decoration:none;border:1px solid rgba(60,44,26,.4);border-radius:30px;padding:9px 17px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;transition:background .2s ease,color .2s ease;" style-hover="background:#9c7b22;color:#fff;">{{ it.linkText }} &rarr;</a>
+                <a href="{{ it.link }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:{{ activeAccent }};text-decoration:none;border:1px solid {{ activeAccent }};border-radius:30px;padding:9px 17px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1.5px;transition:background .2s ease,color .2s ease;" style-hover="background:rgba(60,44,26,.09);">{{ it.linkText }} &rarr;</a>
                 </sc-if>
               </div>
 
@@ -322,7 +322,7 @@
         <!-- Hosting Live Events: a permanent media section within Film -->
         <sc-if value="{{ isFilm }}" hint-placeholder-val="{{ false }}">
         <section style="position:relative;margin-top:clamp(46px,8vw,86px);padding-top:20px;border-top:3px solid rgba(42,33,26,.65);">
-          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;color:#795d17;">LIVE PRODUCTION</div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;color:{{ activeAccent }};">LIVE PRODUCTION</div>
           <h2 style="margin:7px 0 0;font-family:'Libre Caslon Display',serif;font-size:clamp(32px,5vw,52px);font-weight:400;line-height:1;color:#21170e;">{{ liveEvents.title }}</h2>
           <div style="margin-top:8px;font-size:13px;font-weight:700;color:#5f4e3a;">{{ liveEvents.subtitle }}</div>
           <p style="margin:18px 0 24px;max-width:68ch;font-size:15px;line-height:1.75;color:#4f402f;">{{ liveEvents.body }}</p>
@@ -346,7 +346,7 @@
           <sc-for list="{{ visualSections }}" as="visualSection" hint-placeholder-count="2">
           <section>
             <div style="border-bottom:3px solid rgba(42,33,26,.65);padding-bottom:12px;">
-              <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;color:#795d17;">{{ visualSection.sectionNo }}</div>
+              <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;color:{{ activeAccent }};">{{ visualSection.sectionNo }}</div>
               <h2 style="margin:6px 0 0;font-family:'Libre Caslon Display',serif;font-size:clamp(32px,5vw,54px);font-weight:400;line-height:1;color:#21170e;">{{ visualSection.title }}</h2>
               <div style="margin-top:8px;font-size:13px;font-weight:700;color:#5f4e3a;">{{ visualSection.subtitle }}</div>
             </div>
@@ -389,7 +389,7 @@
                   <span style="font-family:'Space Mono',monospace;font-size:11px;color:#8a7a64;white-space:nowrap;">{{ e.yr }}</span>
                 </div>
                 <div style="font-size:13px;color:#6b5a44;margin-top:4px;">{{ e.degree }}</div>
-                <div style="display:inline-block;margin-top:9px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;color:#7c6645;border:1px solid rgba(60,44,26,.3);border-radius:30px;padding:3px 10px;">{{ e.note }}</div>
+                <div style="display:inline-block;margin-top:9px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;color:{{ activeAccent }};border:1px solid rgba(60,44,26,.3);border-radius:30px;padding:3px 10px;">{{ e.note }}</div>
               </div>
             </sc-for>
           </div>
@@ -635,6 +635,9 @@ class Component extends DCLogic {
       activeTagline: active ? active.tagline : '',
       activeListLabel: active ? active.listLabel : 'TRACKLIST',
       activeBg: active ? 'url("' + active.img + '")' : 'none',
+      // per-record editable colours (default to the current warm palette)
+      activeAccent: active && active.accent ? active.accent : '#7c5f16',
+      activePaper: active && active.paper ? active.paper : '#f4ead4',
       activeItems,
       activeMeta,
       runtime,
