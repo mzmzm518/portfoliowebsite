@@ -54,6 +54,13 @@
   .navbtn .n{font-size:15px;font-weight:600;color:var(--ink);}
   .navbtn .d{font-size:12px;color:var(--ink-soft);margin-top:1px;}
   .navbtn .code{font-size:10px;color:var(--gold);letter-spacing:2px;font-family:'Space Mono',monospace;}
+  .navrow{display:flex;align-items:stretch;gap:4px;margin-bottom:4px;}
+  .navrow .navbtn{flex:1;margin-bottom:0;}
+  .navmv{display:flex;flex-direction:column;justify-content:center;gap:2px;}
+  .navarrow{border:1px solid var(--line);background:#fff;border-radius:6px;width:26px;height:20px;
+    line-height:1;font-size:9px;color:var(--ink-soft);cursor:pointer;padding:0;transition:.15s;}
+  .navarrow:hover:not(:disabled){background:#eae6dd;color:var(--ink);}
+  .navarrow:disabled{opacity:.3;cursor:default;}
 
   .edit{padding:24px 26px;overflow-y:auto;}
   .edit .panelttl{font-size:11px;color:var(--gold);margin-bottom:2px;}
@@ -226,10 +233,29 @@ async function startApp(user){
   }catch(e){ $('form').innerHTML='<p style="color:#a33">Couldn\'t load your content. Please refresh.</p>'; }
 }
 function buildNav(){ const n=$('nav'); n.innerHTML='';
-  data.records.forEach(r=>{ const b=el('button','navbtn'); b.dataset.id=r.id;
+  data.records.forEach((r,i)=>{
+    const row=el('div','navrow');
+    const b=el('button','navbtn'); b.dataset.id=r.id;
+    if(r.id===current) b.classList.add('on');
     b.innerHTML=`<div class="code">${esc(r.no)}</div><div class="n">${esc(r.label)}</div>
       <div class="d">${esc(NAV_DESC[r.id]||r.desc||'')}</div>`;
-    b.onclick=()=>select(r.id); n.appendChild(b); });
+    b.onclick=()=>select(r.id);
+    const mv=el('div','navmv');
+    const up=el('button','navarrow'); up.type='button'; up.textContent='▲'; up.title='Move this section up';
+    up.disabled=i===0; up.onclick=e=>{ e.stopPropagation(); moveRecord(i,-1); };
+    const dn=el('button','navarrow'); dn.type='button'; dn.textContent='▼'; dn.title='Move this section down';
+    dn.disabled=i===data.records.length-1; dn.onclick=e=>{ e.stopPropagation(); moveRecord(i,1); };
+    mv.appendChild(up); mv.appendChild(dn);
+    row.appendChild(b); row.appendChild(mv); n.appendChild(row);
+  });
+}
+// Reorder the whole section (record) up/down. Renumber the hidden `no` codes so the
+// live site — which orders records by `no` — shows the new order after Publish.
+function moveRecord(i,dir){ const a=data.records, j=i+dir;
+  if(j<0||j>=a.length)return;
+  [a[i],a[j]]=[a[j],a[i]];
+  a.forEach((r,k)=>{ r.no='A'+(k+1); });
+  buildNav();
 }
 function select(id){ current=id; rec=data.records.find(r=>r.id===id);
   document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('on',b.dataset.id===id));
