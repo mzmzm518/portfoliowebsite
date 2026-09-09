@@ -138,6 +138,10 @@
   .wrap.analytics .prevwrap{display:none;}
   .analytics-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px;}
   .analytics-head p{margin:0;color:var(--ink-soft);font-size:13px;}
+  .analytics-back{border:1px solid var(--gold);background:#fff;color:var(--ink);border-radius:8px;padding:9px 12px;
+    font:inherit;font-weight:700;cursor:pointer;}
+  .analytics-back:hover{background:#f5efdf;}
+  .analytics-updated{font-size:11px!important;margin-left:auto!important;}
   .analytics-head select{margin-left:auto;padding:9px 34px 9px 11px;border:1px solid #d9d4c8;
     border-radius:8px;background:#fff;color:var(--ink);font:inherit;}
   .metric-grid{display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:12px;margin-bottom:22px;}
@@ -159,7 +163,13 @@
   .statrow .bar i{display:block;height:100%;background:var(--gold);border-radius:10px;}
   .analytics-state{padding:28px;border:1px dashed #c8bfa8;background:#faf8f3;border-radius:12px;color:var(--ink-soft);}
   .analytics-state strong{display:block;color:var(--ink);font-size:16px;margin-bottom:5px;}
-  @media(max-width:760px){.metric-grid,.breakdowns{grid-template-columns:1fr;}}
+  .analytics-empty{text-align:center;padding:42px 24px;}
+  .analytics-empty .empty-icon{font-family:'Libre Caslon Display',serif;font-size:40px;color:var(--gold);margin-bottom:8px;}
+  @media(max-width:760px){
+    .wrap.analytics{grid-template-columns:1fr;}.wrap.analytics .side{display:block;}
+    .metric-grid,.breakdowns{grid-template-columns:1fr;}.analytics-head select{margin-left:0;}
+    .analytics-updated{width:100%;margin-left:0!important;}.daily-chart{height:125px;}
+  }
 
   .savebar{position:sticky;bottom:0;margin-top:26px;background:#fbf9f4;border:1px solid var(--line);
     border-radius:11px;padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
@@ -240,7 +250,7 @@
 const REPO='mzmzm518/portfoliowebsite', BRANCH='main', API='https://api.github.com';
 const NAV_DESC={about:'The person behind it',copywriting:'Words that sell & stick',
   concepts:'Photos, design & galleries',sound:'Audio & sonic identity',film:'Motion & moving image'};
-let token=null, data=null, current=null, rec=null, authWin=null;
+let token=null, data=null, current=null, rec=null, authWin=null, lastEditorId=null;
 const esc=s=>String(s==null?'':s);
 const html=s=>esc(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const $=id=>document.getElementById(id);
@@ -300,7 +310,7 @@ function moveRecord(i,dir){ const a=data.records, j=i+dir;
   a.forEach((r,k)=>{ r.no='A'+(k+1); });
   buildNav();
 }
-function select(id){ current=id; rec=data.records.find(r=>r.id===id);
+function select(id){ current=id; lastEditorId=id; rec=data.records.find(r=>r.id===id);
   $('editorWrap').classList.remove('analytics');
   $('analyticsBtn').classList.remove('on');
   $('saveBtn').closest('.savebar').style.display='flex';
@@ -341,6 +351,7 @@ async function showAnalytics(days){
 
 function renderAnalytics(a){
   const totalViews=Number(a.totals.pageviews||0), totalVisitors=Number(a.totals.visitors||0);
+  const hasTraffic=totalViews>0||totalVisitors>0;
   const maxDay=Math.max(1,...a.daily.map(x=>Number(x.pageviews||0)));
   const chart=a.daily.map(x=>{
     const date=new Date(x.timestamp), label=date.toLocaleDateString(undefined,{month:'short',day:'numeric'});
@@ -354,8 +365,12 @@ function renderAnalytics(a){
       : '<p style="font-size:12px;color:var(--ink-soft)">No data yet.</p>';
     return `<div class="chart-card"><h3>${title}</h3>${body}</div>`;
   };
+  const updated=new Date().toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
   $('form').innerHTML=`
-    <div class="analytics-head"><p>${html(a.since)} to ${html(a.until)}</p>
+    <div class="analytics-head">
+      <button class="analytics-back" id="analyticsBack" type="button">&larr; Back to editor</button>
+      <p>${html(a.since)} to ${html(a.until)}</p>
+      <p class="analytics-updated">Last updated ${html(updated)}</p>
       <select id="analyticsRange" aria-label="Analytics date range">
         <option value="7" ${a.days===7?'selected':''}>Last 7 days</option>
         <option value="14" ${a.days===14?'selected':''}>Last 14 days</option>
@@ -365,13 +380,15 @@ function renderAnalytics(a){
       <div class="metric"><div class="num">${totalVisitors.toLocaleString()}</div><div class="label">Visitors</div></div>
       <div class="metric"><div class="num">${totalViews.toLocaleString()}</div><div class="label">Page views</div></div>
     </div>
-    <div class="chart-card"><h3>Daily page views</h3><div class="daily-chart">${chart||'<p>No data yet.</p>'}</div></div>
+    ${hasTraffic?`<div class="chart-card"><h3>Daily page views</h3><div class="daily-chart">${chart}</div></div>
     <div class="breakdowns">
       ${panel('Top pages',a.pages,'requestPath','/')}
       ${panel('Countries',a.countries,'country','Unknown')}
       ${panel('Referral sources',a.referrers,'referrerHostname','Direct')}
       ${panel('Devices',a.devices,'deviceType','Unknown')}
-    </div>`;
+    </div>`:`<div class="analytics-state analytics-empty"><div class="empty-icon">0</div><strong>No visits recorded yet</strong>
+      Analytics starts collecting after it is enabled. New information may take up to 24 hours to appear.</div>`}`;
+  $('analyticsBack').onclick=()=>select(lastEditorId||data.records[0].id);
   $('analyticsRange').onchange=e=>showAnalytics(Number(e.target.value));
 }
 
