@@ -109,9 +109,9 @@
       "id": "sound",
       "no": "A2",
       "cat": "ML-004",
-      "label": "Ad Concepts",
+      "label": "Ad Concepts / Product Innovation",
       "desc": "Brand Ideas",
-      "title": "Ad Concepts",
+      "title": "Ad Concepts / Product Innovation",
       "genre": "Audio / Instrumentals",
       "side": "SIDE B",
       "listLabel": "PROJECTS",
@@ -177,6 +177,14 @@
             }
           ],
           "image": "images/uploads/1787627106736-bfl8k-new.webp"
+        },
+        {
+          "title": "Value Pick Up - Product Innovation Idea",
+          "meta": "A new asset to Value Villages' website.",
+          "year": "2026",
+          "dur": "",
+          "body": "Value Village can offer a free donation pickup service. Anyone can schedule a pickup through their website, and a team will come directly to their doorstep to collect the donated items. This makes the process simple and convenient, as donors do not need to worry about transporting or dropping off their items themselves.",
+          "image": "images/uploads/1789425773754-j4wxx-Screenshot_2026-09-11_130133.png"
         }
       ],
       "paper": "#f4ead4"
