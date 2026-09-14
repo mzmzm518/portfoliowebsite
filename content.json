@@ -183,7 +183,7 @@
           "meta": "A new asset to Value Villages' website.",
           "year": "2026",
           "dur": "",
-          "body": "Value Village can offer a free donation pickup service. Anyone can schedule a pickup through their website, and a team will come directly to their doorstep to collect the donated items. This makes the process simple and convenient, as donors do not need to worry about transporting or dropping off their items themselves.",
+          "body": "Value Village can offer a free donation pickup service. Anyone can schedule a pickup through their website, and a team will come directly to their doorstep to collect the donated items. This makes the process simple and convenient, as donors do not need to worry about transporting or dropping off their items themselves. \n\nI created this prototype in VS Code using Codex to help bring the concept to life and gauge potential user interest.\n\nIn addition to making donations more convenient, the platform could help create jobs in Toronto by offering drivers a flat fee for each pickup, plus any additional tips provided by donors. Value Village would still receive donated items, while benefiting from faster inventory collection and replenishment. The model could also help balance inventory across locations. For example, if a Value Village store in the GTA is running low on stock on furniture or clothes, then more pickup requests could be routed to support that location's inventory needs.",
           "image": "images/uploads/1789425773754-j4wxx-Screenshot_2026-09-11_130133.png"
         }
       ],
