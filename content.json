@@ -307,7 +307,14 @@
           "year": "2026",
           "dur": "",
           "body": "Since the bottle is recyclable, I think it would be more effective to use a clever tagline like \"Great Taste. Less Waste.\" It's simple, easy to read, and more engaging than just stating that the bottle is recyclable. It makes the message more memorable and fun for people to read while still highlighting the sustainability aspect.",
-          "image": "images/uploads/1789511311393-yekap-imgo_webp.webp"
+          "image": "images/uploads/1789511311393-yekap-imgo_webp.webp",
+          "gallery": [
+            {
+              "image": "images/uploads/1789661054797-hc7bw-aee1e369-9a53-41ab-be4b-30b51c45a156-IMG_5914-1-1-768x1024.jpg",
+              "title": "Original AD Copy",
+              "caption": ""
+            }
+          ]
         }
       ]
     },
